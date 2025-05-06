@@ -1,7 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Trophy, GraduationCap, DollarSign, Calendar, Medal, Award, Star, AlignCenterVertical as Certificate } from 'lucide-react';
-import PageTransition from '../components/PageTransition';
+import { motion } from "framer-motion";
+import {
+  Calendar,
+  DollarSign,
+  GraduationCap,
+  Medal,
+  Trophy,
+} from "lucide-react";
+import PageTransition from "../components/PageTransition";
 
 const Prizes = () => {
   return (
@@ -28,7 +33,7 @@ const Prizes = () => {
               <Trophy className="w-8 h-8 text-[#957C3D]" />
               <h3 className="text-3xl font-bold text-[#957C3D]">Trophies</h3>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -43,10 +48,26 @@ const Prizes = () => {
               />
               <div className="relative space-y-6">
                 {[
-                  { icon: Medal, name: 'Gold', range: '85 - 100', color: 'text-yellow-600' },
-                  { icon: Award, name: 'Silver', range: '75 - 84', color: 'text-gray-400' },
-                  { icon: Star, name: 'Bronze', range: '65 - 74', color: 'text-amber-700' },
-                  { icon: Certificate, name: 'Certificate of Participation', range: 'below 65', color: 'text-[#957C3D]' }
+                  {
+                    name: "Gold",
+                    range: "85 - 100",
+                    color: "text-yellow-600",
+                  },
+                  {
+                    name: "Silver",
+                    range: "75 - 84",
+                    color: "text-gray-400",
+                  },
+                  {
+                    name: "Bronze",
+                    range: "65 - 74",
+                    color: "text-amber-700",
+                  },
+                  {
+                    name: "Certificate of Participation",
+                    range: "below 65",
+                    color: "text-[#957C3D]",
+                  },
                 ].map((trophy, index) => (
                   <motion.div
                     key={index}
@@ -58,13 +79,17 @@ const Prizes = () => {
                     <motion.div
                       whileHover={{ scale: 1.2, rotate: 360 }}
                       transition={{ duration: 0.5 }}
-                      className={`p-4 rounded-full bg-white/30 backdrop-blur-sm ${trophy.color}`}
+                      className={`p-2 rounded-full bg-white/30 backdrop-blur-sm ${trophy.color}`}
                     >
-                      <trophy.icon className="w-8 h-8" />
+                      <Medal className="w-5 h-5" />
                     </motion.div>
                     <div>
-                      <h4 className="text-2xl font-bold text-[#4A3B24]">{trophy.name}</h4>
-                      <p className="text-[#5C4830] text-lg">Score Range: {trophy.range}</p>
+                      <h4 className="text-2xl font-bold text-[#4A3B24]">
+                        {trophy.name}
+                      </h4>
+                      <p className="text-[#5C4830] text-lg">
+                        Score Range: {trophy.range}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -83,7 +108,7 @@ const Prizes = () => {
               <GraduationCap className="w-8 h-8 text-[#957C3D]" />
               <h3 className="text-3xl font-bold text-[#957C3D]">Masterclass</h3>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -97,7 +122,8 @@ const Prizes = () => {
                 className="absolute inset-0 bg-gradient-to-br from-[#D72638]/5 to-transparent pointer-events-none"
               />
               <p className="text-[#4A3B24] text-xl">
-                Selected participants will be invited to participate in free masterclasses with our renowned judges
+                Selected participants will be invited to participate in free
+                masterclasses with our renowned judges
               </p>
             </motion.div>
           </div>
@@ -113,7 +139,7 @@ const Prizes = () => {
               <DollarSign className="w-8 h-8 text-[#957C3D]" />
               <h3 className="text-3xl font-bold text-[#957C3D]">Cash Prize</h3>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -155,9 +181,11 @@ const Prizes = () => {
               className="flex items-center gap-2 mb-8"
             >
               <Calendar className="w-8 h-8 text-[#957C3D]" />
-              <h3 className="text-3xl font-bold text-[#957C3D]">Additional Benefits</h3>
+              <h3 className="text-3xl font-bold text-[#957C3D]">
+                Additional Benefits
+              </h3>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -181,7 +209,8 @@ const Prizes = () => {
                 </div>
                 <div className="border-t border-[#957C3D]/20 pt-6">
                   <p className="text-[#4A3B24] text-lg">
-                    Details will be announced through website and email by October 2025
+                    Details will be announced through website and email by
+                    October 2025
                   </p>
                 </div>
               </div>

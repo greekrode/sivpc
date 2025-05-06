@@ -71,7 +71,7 @@ const Categories = () => {
             )
           )}
         </div>
-        <p className="text-[#4A3B24] mt-4 text-sm bg-[#F5E6D3] p-4 border border-[#957C3D]/20">
+        <p className="text-[#4A3B24] mt-4 text-sm bg-[#F5E6D3] p-4 border border-[#957C3D]/20 italic">
           *no more than one piece for each selected category
           <br />
           *participants must submit the sheet music in PDF format online through
