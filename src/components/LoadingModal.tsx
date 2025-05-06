@@ -43,23 +43,24 @@ function LoadingModal({ isOpen }: LoadingModalProps) {
 
           {/* Loading Message */}
           <div className="text-center space-y-3">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-[#957C3D]">
               Processing Registration
             </h3>
-            <p className="text-base text-gray-600">
+            <p className="text-base text-[#957C3D]">
               Please wait while we process your registration...
             </p>
-            <div className="mt-4 p-4 bg-yellow-50 rounded-md">
+            <div className="mt-4 p-4 bg-[#F5E6D3] rounded-md">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <ExclamationTriangleIcon
-                    className="h-5 w-5 text-yellow-400"
+                    className="h-5 w-5 text-[#957C3D]"
                     aria-hidden="true"
                   />
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-yellow-700">
-                    Please do not close this page. Closing the page will void your registration.
+                  <p className="text-sm text-[#957C3D]">
+                    Please do not close this page. Closing the page will void
+                    your registration.
                   </p>
                 </div>
               </div>
@@ -71,4 +72,4 @@ function LoadingModal({ isOpen }: LoadingModalProps) {
   );
 }
 
-export default LoadingModal; 
+export default LoadingModal;

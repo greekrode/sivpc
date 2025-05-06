@@ -9,6 +9,9 @@ import { motion } from "framer-motion";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import LoadingModal from "./LoadingModal";
+import ThankYouModal from "./ThankYouModal";
+import moment from "moment";
+import { v4 as uuidv4 } from "uuid";
 
 // Modal design from EventDetails.tsx
 const Modal = ({
@@ -54,22 +57,20 @@ const registrationSchema = z.object({
   registrant_whatsapp: z.string().regex(/^\+[1-9]\d{1,14}$/, "Invalid phone"),
   registrant_email: z.string().email("Invalid email"),
   participant_name: z.string().min(3, "Min 3 chars").max(100, "Max 100 chars"),
-  category_id: z.number().min(1, "Select category"),
-  subcategory_id: z.number().min(1, "Select subcategory"),
+  category_name: z.string().min(1, "Select category"),
+  subcategory_name: z.string().min(1, "Select subcategory"),
   song_title: z.string().min(1, "Enter song title").max(150, "Max 150 chars"),
   song_duration: z.string().max(10, "Max 10 chars"),
   bank_name: z.string().min(1, "Enter bank name").max(100, "Max 100 chars"),
-  bank_account_number: z
-    .string()
-    .regex(/^\d+$/, "Only numbers")
-    .min(1, "Enter account number")
-    .max(25, "Max 25 chars"),
-  bank_account_name: z
+  account_holder_name: z
     .string()
     .min(1, "Enter account name")
     .max(100, "Max 100 chars"),
+  payment_receipt: z
+    .any()
+    .refine((file) => file?.length > 0, "Upload payment receipt."),
   terms_accepted: z.literal(true, {
-    errorMap: () => ({ message: "Accept terms" }),
+    errorMap: () => ({ message: "Please accept the terms and conditions." }),
   }),
 });
 
@@ -102,6 +103,8 @@ const RegistrationModal = ({
 }: RegistrationModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showLoadingModal, setShowLoadingModal] = useState(false);
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+  const [referenceNumber, setReferenceNumber] = useState("");
   const {
     register,
     handleSubmit,
@@ -115,6 +118,8 @@ const RegistrationModal = ({
       registrant_whatsapp: "",
       song_duration: "",
       registrant_name: "",
+      category_name: "",
+      subcategory_name: "",
     },
   });
 
@@ -122,38 +127,75 @@ const RegistrationModal = ({
     | "personal"
     | "parents"
     | "teacher";
-  const categoryId = watch("category_id") as number;
-  const selectedCategory = categories.find((cat) => cat.id === categoryId);
+  const categoryName = watch("category_name");
+  const selectedCategory = categories.find((cat) => cat.name === categoryName);
 
   const onSubmit = async (data: RegistrationForm) => {
     try {
       setIsSubmitting(true);
       setShowLoadingModal(true);
-      
-      // TODO: Replace with your actual API endpoint
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+
+      const formData = new FormData();
+
+      // Add all form fields to FormData
+      Object.entries(data).forEach(([key, value]) => {
+        if (key === "payment_receipt") {
+          // Get the first file from FileList
+          const file = (value as FileList)[0];
+          if (file) {
+            formData.append(key, file);
+          }
+        } else {
+          formData.append(key, value as string);
+        }
       });
 
-      if (!response.ok) {
-        throw new Error('Registration failed');
+      // Generate reference number (4 chars from UUID + last 4 of phone)
+      const phone = data.registrant_whatsapp.replace(/\D/g, "");
+      const uuid = uuidv4().replace(/-/g, "");
+      const refNumber = `${uuid.slice(0, 4)}-${phone.slice(-4)}`;
+
+      if (data.registrant_status === "personal") {
+        formData.set("registrant_name", data.participant_name);
       }
 
-      // Registration successful
+      // Add ref_code and submitted_at
+      formData.append("ref_code", refNumber);
+      formData.append("submitted_at", moment().format("YYYY-MM-DD HH:mm"));
+
+      const response = await fetch(
+        "https://n8n.kangritel.com/webhook/sivpc-reg",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Basic ${btoa(
+              `${import.meta.env.VITE_WEBHOOK_USERNAME}:${
+                import.meta.env.VITE_WEBHOOK_PASSWORD
+              }`
+            )}`,
+          },
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      setReferenceNumber(refNumber);
       setShowLoadingModal(false);
-      onClose();
-      
+      setShowThankYouModal(true);
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error("Registration error:", error);
       setShowLoadingModal(false);
-      // TODO: Show error message to user
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleThankYouClose = () => {
+    setShowThankYouModal(false);
+    onClose();
   };
 
   return (
@@ -200,8 +242,8 @@ const RegistrationModal = ({
                   control={control}
                   render={({ field: { onChange, value } }) => (
                     <PhoneInput
-                      country="id"
-                      preferredCountries={["id", "sg", "my"]}
+                      country="sg"
+                      preferredCountries={["sg", "my", "id"]}
                       enableSearch
                       inputClass="!w-full !py-2 !text-base !rounded-md !border-gray-300 focus:!border-marigold focus:!ring focus:!ring-marigold focus:!ring-opacity-50 text-gray-900"
                       buttonClass="!border-gray-300 !rounded-l-md hover:!bg-gray-50"
@@ -271,21 +313,19 @@ const RegistrationModal = ({
                   Category
                 </label>
                 <select
-                  {...register("category_id", {
-                    setValueAs: (value) => (value ? parseInt(value) : ""),
-                  })}
+                  {...register("category_name")}
                   className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
                 >
                   <option value="">Select a category</option>
                   {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
+                    <option key={category.id} value={category.name}>
                       {category.name}
                     </option>
                   ))}
                 </select>
-                {errors.category_id && (
+                {errors.category_name && (
                   <p className="mt-1 text-sm text-red-600">
-                    {errors.category_id.message}
+                    {errors.category_name.message}
                   </p>
                 )}
               </div>
@@ -295,22 +335,20 @@ const RegistrationModal = ({
                     Subcategory
                   </label>
                   <select
-                    {...register("subcategory_id", {
-                      setValueAs: (value) => (value ? parseInt(value) : ""),
-                    })}
+                    {...register("subcategory_name")}
                     className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
                   >
                     <option value="">Select a subcategory</option>
                     {selectedCategory.subCategories.map((sub) => (
                       <option
                         key={sub.id}
-                        value={sub.id}
+                        value={sub.name}
                       >{`${sub.name} (${sub.ageRequirement})`}</option>
                     ))}
                   </select>
-                  {errors.subcategory_id && (
+                  {errors.subcategory_name && (
                     <p className="mt-1 text-sm text-red-600">
-                      {errors.subcategory_id.message}
+                      {errors.subcategory_name.message}
                     </p>
                   )}
                 </div>
@@ -375,33 +413,37 @@ const RegistrationModal = ({
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Account Number
+                Account Holder Name
               </label>
               <input
                 type="text"
-                {...register("bank_account_number")}
+                {...register("account_holder_name")}
                 className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
               />
-              {errors.bank_account_number && (
+              {errors.account_holder_name && (
                 <p className="mt-1 text-sm text-red-600">
-                  {errors.bank_account_number.message}
+                  {errors.account_holder_name.message}
                 </p>
               )}
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Account Holder Name
+                Payment Receipt
               </label>
               <input
-                type="text"
-                {...register("bank_account_name")}
+                type="file"
+                accept="image/*,.pdf"
+                {...register("payment_receipt")}
                 className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
               />
-              {errors.bank_account_name && (
+              {errors.payment_receipt && (
                 <p className="mt-1 text-sm text-red-600">
-                  {errors.bank_account_name.message}
+                  {errors.payment_receipt.message?.toString()}
                 </p>
               )}
+              <p className="mt-1 text-xs text-gray-500">
+                Upload your payment receipt (image or PDF)
+              </p>
             </div>
           </div>
 
@@ -431,18 +473,18 @@ const RegistrationModal = ({
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4">
+          <div className="flex justify-end gap-3 pt-6">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 font-medium text-sm"
+              className="px-6 py-2.5 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-marigold"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-marigold text-white rounded-md hover:bg-marigold/90 disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm"
+              className="px-6 py-2.5 text-base font-medium text-white bg-[#002349] rounded-lg hover:bg-[#002349]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#002349] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
@@ -450,6 +492,12 @@ const RegistrationModal = ({
         </form>
       </Modal>
       <LoadingModal isOpen={showLoadingModal} />
+      <ThankYouModal
+        isOpen={showThankYouModal}
+        onClose={handleThankYouClose}
+        participantName={watch("participant_name")}
+        referenceNumber={referenceNumber}
+      />
     </>
   );
 };
