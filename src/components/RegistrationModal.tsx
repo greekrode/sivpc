@@ -394,7 +394,7 @@ const RegistrationModal = ({
             </h3>
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
               <p className="text-medium text-gray-900">Bank Transfer</p>
-              <p className="text-medium text-gray-900">Paynow</p>
+              <p className="text-medium text-gray-900">PayLah!</p>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
