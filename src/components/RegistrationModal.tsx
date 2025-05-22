@@ -41,7 +41,7 @@ const Modal = ({
           onClick={(e) => e.stopPropagation()}
           className="bg-white rounded-lg shadow-xl w-full max-w-xl max-h-[85vh] overflow-y-auto"
         >
-          <div className="bg-[#002349] px-5 py-3 border-b border-gray-200">
+          <div className="bg-[#002349]/95 px-5 py-3 border-b border-gray-200">
             <h3 className="text-xl font-semibold text-[#957C3D]">{title}</h3>
           </div>
           <div className="p-5">{children}</div>

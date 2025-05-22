@@ -1,5 +1,4 @@
-import React from "react";
-import { X, ScrollText } from "lucide-react";
+import { X, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface RulesModalProps {
@@ -16,7 +15,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-[#314e61]/80 backdrop-blur-xl z-50 flex items-center justify-center p-4"
         onClick={onClose}
       >
         <motion.div
@@ -24,26 +23,36 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-[#F5E6D3] p-8 rounded-none border border-[#957C3D]/20 max-w-4xl max-h-[90vh] overflow-y-auto relative"
+          className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md max-w-4xl max-h-[90vh] overflow-y-auto relative"
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-[#D72638] hover:text-[#D72638]/80 transition-colors"
+            className="absolute top-4 right-4 text-[#c9a86b] hover:text-[#5e4b3b] transition-colors"
           >
-            <X className="w-6 h-6" />
+            <X className="w-7 h-7" />
           </button>
 
-          <h2 className="text-3xl font-bold text-[#4A3B24] mb-8 flex items-center gap-2">
-            <ScrollText className="w-8 h-8 text-[#D72638]" />
-            Rules & Regulations
-          </h2>
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="flex items-center gap-2 mb-2">
+                <FileText className="w-8 h-8 text-[#c9a86b]" />
+                <h2 className="text-3xl md:text-4xl font-bold text-[#c9a86b]">
+                  Rules & Regulations
+                </h2>
+              </div>
+              <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+            </div>
+          </div>
 
-          <div className="space-y-8 text-[#4A3B24]">
+          <div className="space-y-12">
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                1. General Rules
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  1. General Rules
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   Every participant must adhere to the regulations of the
                   competition.
@@ -78,10 +87,13 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                2. Performance Guidelines
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  2. Performance Guidelines
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   All pieces must be performed from memory; sheet music is not
                   allowed on stage.
@@ -106,17 +118,20 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                3. Judging & Awards
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  3. Judging & Awards
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   Performances will be judged by a panel of qualified
                   adjudicators selected by the organizers.
                 </li>
                 <li>
                   Judging criteria include:
-                  <ul className="list-disc pl-5 mt-2">
+                  <ul className="list-disc pl-6 mt-3 space-y-2">
                     <li>Technical proficiency</li>
                     <li>Musicality</li>
                     <li>Interpretation</li>
@@ -133,7 +148,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                 </li>
                 <li>
                   Every participant will receive:
-                  <ul className="list-disc pl-5 mt-2">
+                  <ul className="list-disc pl-6 mt-3 space-y-2">
                     <li>A trophy</li>
                     <li>A certificate</li>
                     <li>A digital feedback form</li>
@@ -155,13 +170,16 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                4. Registration
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  4. Registration
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   All participants must:
-                  <ul className="list-disc pl-5 mt-2">
+                  <ul className="list-disc pl-6 mt-3 space-y-2">
                     <li>Complete the online registration form</li>
                     <li>Submit PDF sheet music via the registration form</li>
                     <li>Pay the registration fee to be officially entered</li>
@@ -188,10 +206,13 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                5. Media & Consent
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  5. Media & Consent
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   The organizers may record and livestream performances for
                   promotional and archival use.
@@ -208,10 +229,13 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                6. Liability
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  6. Liability
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   The organizers, sponsors, and affiliated parties are not
                   liable for any loss, injury, or inconvenience during the
@@ -221,13 +245,16 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                7. Announcement of Results
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  7. Announcement of Results
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   Results will be posted on:
-                  <ul className="list-disc pl-5 mt-2">
+                  <ul className="list-disc pl-6 mt-3 space-y-2">
                     <li>The official Website</li>
                     <li>The competition's Instagram page</li>
                   </ul>
@@ -236,10 +263,13 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             </section>
 
             <section>
-              <h3 className="text-2xl font-semibold text-[#957C3D] mb-4">
-                8. Final Provisions
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
+              <div className="inline-block mb-5">
+                <h3 className="text-2xl font-bold text-[#c9a86b] mb-2">
+                  8. Final Provisions
+                </h3>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <ul className="list-disc pl-6 space-y-3 text-[#5e4b3b]">
                 <li>
                   By registering, participants agree to abide by all terms and
                   conditions.
@@ -254,6 +284,15 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                 </li>
               </ul>
             </section>
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={onClose}
+              className="px-10 py-5 bg-[#ffb703] text-black font-bold tracking-wider uppercase text-base inline-flex items-center gap-3 rounded-md transition-all duration-300 hover:bg-[#ffb703]/90"
+            >
+              Close
+            </button>
           </div>
         </motion.div>
       </motion.div>

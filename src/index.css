@@ -7,15 +7,27 @@
     @apply bg-[#002349] text-white;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant', serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant", serif;
     font-weight: 600;
     letter-spacing: 0.02em;
   }
 
   body {
-    font-family: 'Cormorant', serif;
+    font-family: "Cormorant", serif;
     font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  p {
+    font-family: "EB Garamond", serif;
+    font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.01em;
   }
@@ -25,7 +37,7 @@
   .btn-primary {
     @apply px-8 py-4 bg-[#957C3D] hover:bg-[#806B34] text-white font-['Cormorant'] font-semibold rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 tracking-wider uppercase text-xl;
   }
-  
+
   .btn-secondary {
     @apply px-8 py-4 bg-[#D72638] hover:bg-[#C11527] text-white font-['Cormorant'] font-semibold rounded-none shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 tracking-wider uppercase text-xl;
   }

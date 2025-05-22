@@ -1,42 +1,26 @@
-import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Piano, Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#002349]/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${"bg-[#002349]/95 backdrop-blur-md shadow-lg"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-2 group">
-            <Piano className="h-8 w-8 text-[#957C3D] transform group-hover:scale-110 transition-transform duration-300" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-white to-[#957C3D] bg-clip-text text-transparent">
-              SIVPC
-            </span>
+            <div className="flex flex-col items-center">
+              <span className="text-5xl font-bold bg-[#ffb703] bg-clip-text text-transparent">
+                SIVPC
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
             <Link to="/events" className="nav-link">
               Events
             </Link>

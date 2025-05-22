@@ -27,21 +27,21 @@ export const periodCategories: { [key: string]: Category[] } = {
     {
       title: "Petite",
       items: [
-        { name: "7 y.o. and below", duration: "max. 2 mins", price: "S$168" },
+        { name: "7 years old and below", duration: "max. 2 mins", price: "S$168" },
       ],
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 y.o", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 y.o", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
       items: [
-        { name: "14 y.o and above", duration: "max. 7 mins", price: "S$288" },
+        { name: "14 years old and above", duration: "max. 7 mins", price: "S$288" },
       ],
     },
   ],
@@ -49,21 +49,21 @@ export const periodCategories: { [key: string]: Category[] } = {
     {
       title: "Petite",
       items: [
-        { name: "7 y.o. and below", duration: "max. 2 mins", price: "S$168" },
+        { name: "7 years old and below", duration: "max. 2 mins", price: "S$168" },
       ],
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 y.o", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 y.o", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
       items: [
-        { name: "14 y.o and above", duration: "max. 7 mins", price: "S$288" },
+        { name: "14 years old and above", duration: "max. 7 mins", price: "S$288" },
       ],
     },
   ],
@@ -71,21 +71,21 @@ export const periodCategories: { [key: string]: Category[] } = {
     {
       title: "Petite",
       items: [
-        { name: "7 y.o. and below", duration: "max. 2 mins", price: "S$168" },
+        { name: "7 years old and below", duration: "max. 2 mins", price: "S$168" },
       ],
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 y.o", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 y.o", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
       items: [
-        { name: "14 y.o and above", duration: "max. 7 mins", price: "S$288" },
+        { name: "14 years old and above", duration: "max. 7 mins", price: "S$288" },
       ],
     },
   ],
@@ -93,21 +93,21 @@ export const periodCategories: { [key: string]: Category[] } = {
     {
       title: "Petite",
       items: [
-        { name: "7 y.o. and below", duration: "max. 2 mins", price: "S$168" },
+        { name: "7 years old and below", duration: "max. 2 mins", price: "S$168" },
       ],
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 y.o", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 y.o", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
       items: [
-        { name: "14 y.o and above", duration: "max. 7 mins", price: "S$288" },
+        { name: "14 years old and above", duration: "max. 7 mins", price: "S$288" },
       ],
     },
   ],
@@ -125,31 +125,31 @@ export const examCategories: ExamCategory[] = [
 export const openCategories: OpenCategory[] = [
   {
     group: "Group A",
-    age: "6 y.o and below",
+    age: "6 years old and below",
     duration: "max. 3 mins",
     price: "S$198",
   },
   {
     group: "Group B",
-    age: "7 y.o - 8 y.o",
+    age: "7 years old - 8 years old",
     duration: "max. 4 mins",
     price: "S$218",
   },
   {
     group: "Group C",
-    age: "9 y.o - 10 y.o",
+    age: "9 years old - 10 years old",
     duration: "max. 5 mins",
     price: "S$248",
   },
   {
     group: "Group D",
-    age: "11 y.o - 12 y.o",
+    age: "11 years old - 12 years old",
     duration: "max. 6 mins",
     price: "S$268",
   },
   {
     group: "Group E",
-    age: "14 y.o & above",
+    age: "14 years old & above",
     duration: "max 7 mins",
     price: "S$288",
   },

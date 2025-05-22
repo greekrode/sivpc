@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import EventDetails from "./pages/EventDetails.tsx";
 import Events from "./pages/Events";
 import Home from "./pages/Home";
 import Prizes from "./pages/Prizes";
@@ -28,18 +27,6 @@ function AnimatedRoutes() {
               <main className="flex-grow">
                 <Events />
               </main>
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/events/:round"
-          element={
-            <div className="flex flex-col flex-grow">
-              <main className="flex-grow">
-                <EventDetails />
-              </main>
-              <Footer />
             </div>
           }
         />
@@ -50,7 +37,6 @@ function AnimatedRoutes() {
               <main className="flex-grow">
                 <Prizes />
               </main>
-              <Footer />
             </div>
           }
         />
