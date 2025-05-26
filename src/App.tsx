@@ -47,7 +47,6 @@ function AnimatedRoutes() {
               <main className="flex-grow">
                 <About />
               </main>
-              <Footer />
             </div>
           }
         />
@@ -58,7 +57,6 @@ function AnimatedRoutes() {
               <main className="flex-grow">
                 <Contact />
               </main>
-              <Footer />
             </div>
           }
         />

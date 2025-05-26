@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import Footer from "../components/Footer";
 
@@ -84,8 +84,7 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-5xl md:text-6xl font-light text-[#ffffff] tracking-wide mb-2 py-16"
             >
-              Get in{" "}
-              <span className="text-[#c9a86b] font-semibold">Touch</span>
+              Get in <span className="text-[#c9a86b] font-semibold">Touch</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -123,6 +122,12 @@ const Contact = () => {
                     title="Phone"
                     content="+65 9774 7304"
                     index={1}
+                  />
+                  <ContactInfo
+                    icon={MapPin}
+                    title="Location"
+                    content="Singapore"
+                    index={2}
                   />
                 </div>
               </motion.section>

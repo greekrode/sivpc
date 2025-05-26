@@ -20,7 +20,7 @@ const Categories = () => {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="inline-block text-4xl font-light text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2"
+                    className="inline-block text-3xl font-bold text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2"
                   >
                     {period}
                   </motion.h4>
@@ -34,7 +34,7 @@ const Categories = () => {
                         transition={{ duration: 0.5, delay: idx * 0.1 + 0.2 }}
                         className="space-y-4"
                       >
-                        <h5 className="text-3xl font-light text-[#987f51]">
+                        <h5 className="text-2xl font-light text-[#987f51]">
                           {category.title}
                         </h5>
                         <div className="space-y-4">
@@ -70,7 +70,7 @@ const Categories = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="bg-[#f5f0e6]/50 p-5 border-l-2 border-[#c9a86b]/50"
             >
-              <p className="text-[#6b5a47] text-base font-light leading-relaxed">
+              <p className="text-[#6b5a47] text-base font-light leading-relaxed italic">
                 *no more than one piece for each selected category
                 <br />
                 *participants must submit the sheet music in PDF format online
@@ -88,7 +88,7 @@ const Categories = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block text-2xl font-light text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2 mb-8"
+            className="inline-block text-3xl font-bold text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2 mb-8"
           >
             ABRSM, Trinity, Rockschool, LCM syllabus
           </motion.h4>
@@ -108,12 +108,12 @@ const Categories = () => {
                 className="flex justify-between items-start border-b border-[#e8dfd1] pb-4"
               >
                 <div>
-                  <p className="text-[#5e4b3b] text-lg">{category.name}</p>
+                  <p className="text-[#5e4b3b] text-xl">{category.name}</p>
                   <p className="text-[#857665] text-base">
                     {category.ageGroup}
                   </p>
                 </div>
-                <p className="text-[#c9a86b] font-light text-lg">
+                <p className="text-[#c9a86b] font-light text-2xl">
                   {category.price}
                 </p>
               </motion.div>
@@ -143,7 +143,7 @@ const Categories = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block text-2xl font-light text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2 mb-8"
+            className="inline-block text-3xl font-bold text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2 mb-8"
           >
             Age Groups
           </motion.h4>
@@ -164,13 +164,13 @@ const Categories = () => {
                   className="flex justify-between items-start border-b border-[#e8dfd1] pb-4"
                 >
                   <div>
-                    <p className="text-[#5e4b3b] text-lg">{category.group}</p>
+                    <p className="text-[#5e4b3b] text-xl">{category.group}</p>
                     <p className="text-[#6b5a47] text-base">{category.age}</p>
                     <p className="text-[#857665] text-base">
                       {category.duration}
                     </p>
                   </div>
-                  <p className="text-[#c9a86b] font-light text-lg">
+                  <p className="text-[#c9a86b] font-light text-2xl">
                     {category.price}
                   </p>
                 </motion.div>
