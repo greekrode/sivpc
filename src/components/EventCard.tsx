@@ -149,7 +149,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
                 <BirdIcon className="w-6 h-6 text-[#a38a5c]" />
               </div>
               <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
-                Early Bird Deadline
+                Early Bird Registration Deadline
               </p>
               <p className="text-[#5e4b3b] text-xl font-light">
                 30th October 2025
