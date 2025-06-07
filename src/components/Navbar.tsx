@@ -1,9 +1,22 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleRegisterClick = () => {
+    if (location.pathname === '/events') {
+      // If already on events page, dispatch custom event to open modal
+      window.dispatchEvent(new CustomEvent('openRegistrationModal'));
+    } else {
+      // Navigate to events page with a flag to open modal
+      navigate('/events?openRegistration=true');
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <nav
@@ -21,6 +34,12 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={handleRegisterClick}
+              className="px-4 py-2 bg-[#ffb703] text-black font-semibold rounded-lg hover:bg-[#e6a503] transition-colors duration-200"
+            >
+              Register Now
+            </button>
             <Link to="/events" className="nav-link">
               Events
             </Link>
@@ -59,6 +78,12 @@ const Navbar = () => {
               >
                 Home
               </Link>
+              <button
+                onClick={handleRegisterClick}
+                className="block w-full text-left px-3 py-2 bg-[#ffb703] text-black font-semibold rounded-md hover:bg-[#e6a503] transition-colors duration-200"
+              >
+                Register Now
+              </button>
               <Link
                 to="/events"
                 className="block px-3 py-2 text-white hover:bg-[#957C3D]/10 rounded-md"

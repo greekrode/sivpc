@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Categories from "../components/Categories/Categories";
 import EventCard from "../components/EventCard";
 import RulesCard from "../components/Rules/RulesCard";
@@ -6,6 +8,34 @@ import PageTransition from "../components/PageTransition";
 import Footer from "../components/Footer";
 
 const Events = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [shouldOpenRegistration, setShouldOpenRegistration] = useState(false);
+
+  useEffect(() => {
+    // Check if we should open registration modal from URL parameter
+    if (searchParams.get('openRegistration') === 'true') {
+      setShouldOpenRegistration(true);
+      // Clean up the URL parameter
+      searchParams.delete('openRegistration');
+      setSearchParams(searchParams, { replace: true });
+    }
+
+    // Listen for custom event to open registration modal
+    const handleOpenRegistration = () => {
+      setShouldOpenRegistration(true);
+    };
+
+    window.addEventListener('openRegistrationModal', handleOpenRegistration);
+
+    return () => {
+      window.removeEventListener('openRegistrationModal', handleOpenRegistration);
+    };
+  }, [searchParams, setSearchParams]);
+
+  const handleRegistrationClosed = () => {
+    setShouldOpenRegistration(false);
+  };
+
   return (
     <PageTransition>
       <div
@@ -71,7 +101,10 @@ const Events = () => {
                 </h2>
                 <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
               </div>
-              <EventCard />
+              <EventCard 
+                shouldOpenRegistration={shouldOpenRegistration}
+                onRegistrationClosed={handleRegistrationClosed}
+              />
             </motion.section>
 
             {/* Rules Section */}

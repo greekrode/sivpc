@@ -143,7 +143,7 @@ export const openCategories: OpenCategory[] = [
   },
   {
     group: "Group D",
-    age: "11 years old - 12 years old",
+    age: "11 years old - 13 years old",
     duration: "max. 6 mins",
     price: "S$268",
   },

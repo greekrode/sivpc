@@ -107,6 +107,43 @@ const Prizes = () => {
               </div>
             </motion.section>
 
+            {/* Cash Prize Section */}
+            <motion.section
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="space-y-10"
+            >
+              <div className="inline-block">
+                <div className="flex items-center gap-2 mb-2">
+                  <DollarSign className="w-8 h-8 text-[#c9a86b]" />
+                  <h3 className="text-3xl md:text-4xl font-bold text-[#c9a86b]">
+                    Cash Prize
+                  </h3>
+                </div>
+                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+              </div>
+              <div className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
+                <div className="relative space-y-6">
+                  <p className="text-[#5e4b3b] text-xl font-semibold">
+                    A total cash prize of up to SGD 2,000.00 will be shared
+                    among:
+                  </p>
+                  <ul className="space-y-3 text-[#5e4b3b] text-lg">
+                    <li>• Best Baroque Award</li>
+                    <li>• Best Classical Award</li>
+                    <li>• Best Romantic Award</li>
+                    <li>• Best 20th Century Award</li>
+                    <li>• Outstanding Performer Award* from Exam Category</li>
+                    <li>• Outstanding Performer Award* from Open Category</li>
+                  </ul>
+                  <p className="text-[#857665] text-sm italic">
+                    *Outstanding Performer Award (95 marks and above)
+                  </p>
+                </div>
+              </div>
+            </motion.section>
+
             {/* Masterclass Section */}
             <motion.section
               initial={{ opacity: 0, y: 30 }}
@@ -131,43 +168,6 @@ const Prizes = () => {
               </div>
             </motion.section>
 
-            {/* Cash Prize Section */}
-            <motion.section
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="space-y-10"
-            >
-              <div className="inline-block">
-                <div className="flex items-center gap-2 mb-2">
-                  <DollarSign className="w-8 h-8 text-[#c9a86b]" />
-                  <h3 className="text-3xl md:text-4xl font-bold text-[#c9a86b]">
-                    Cash Prize
-                  </h3>
-                </div>
-                <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
-              </div>
-              <div className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
-                <div className="relative space-y-6">
-                  <p className="text-[#5e4b3b] text-xl font-semibold">
-                    A total cash prize of up to SGD 2,000.00 will be shared
-                    among:
-                  </p>
-                  <ul className="space-y-3 text-[#5e4b3b] text-lg">
-                    <li>• Outstanding Performer Award</li>
-                    <li>• Best Baroque Award</li>
-                    <li>• Best Classical Award</li>
-                    <li>• Best Romantic Award</li>
-                    <li>• Best 20th Century Award</li>
-                    <li>• Outstanding Performer Award* from Exam Category</li>
-                    <li>• Outstanding Performer Award* from Open Category</li>
-                  </ul>
-                  <p className="text-[#857665] text-sm italic">
-                    *Outstanding Performer Award (95 marks and above)
-                  </p>
-                </div>
-              </div>
-            </motion.section>
 
             {/* Additional Benefits */}
             <motion.section

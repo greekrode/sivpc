@@ -2,9 +2,43 @@ import { motion } from "framer-motion";
 import { examCategories, openCategories, periodCategories } from "./types";
 
 const Categories = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <>
-      <div className="space-y-16 text-[#5e4b3b] bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
+      {/* Navigation Links */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-wrap justify-center gap-4 mb-12"
+      >
+        <button
+          onClick={() => scrollToSection('period-section')}
+          className="px-6 py-3 bg-gradient-to-r from-[#c9a86b]/10 to-[#987f51]/10 hover:from-[#c9a86b]/20 hover:to-[#987f51]/20 text-[#c9a86b] hover:text-[#987f51] text-lg font-medium rounded-full border border-[#c9a86b]/30 hover:border-[#987f51]/50 transition-all duration-300 hover:shadow-lg hover:scale-105 backdrop-blur-sm"
+        >
+          Period Categories
+        </button>
+        <button
+          onClick={() => scrollToSection('exam-section')}
+          className="px-6 py-3 bg-gradient-to-r from-[#c9a86b]/10 to-[#987f51]/10 hover:from-[#c9a86b]/20 hover:to-[#987f51]/20 text-[#c9a86b] hover:text-[#987f51] text-lg font-medium rounded-full border border-[#c9a86b]/30 hover:border-[#987f51]/50 transition-all duration-300 hover:shadow-lg hover:scale-105 backdrop-blur-sm"
+        >
+          Exam Categories
+        </button>
+        <button
+          onClick={() => scrollToSection('age-section')}
+          className="px-6 py-3 bg-gradient-to-r from-[#c9a86b]/10 to-[#987f51]/10 hover:from-[#c9a86b]/20 hover:to-[#987f51]/20 text-[#c9a86b] hover:text-[#987f51] text-lg font-medium rounded-full border border-[#c9a86b]/30 hover:border-[#987f51]/50 transition-all duration-300 hover:shadow-lg hover:scale-105 backdrop-blur-sm"
+        >
+          Age Groups
+        </button>
+      </motion.div>
+
+      <div id="period-section" className="space-y-16 text-[#5e4b3b] bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
         {/* Period Categories */}
         <section>
           <motion.div
@@ -41,7 +75,7 @@ const Categories = () => {
                           {category.items.map((item, itemIdx) => (
                             <div
                               key={itemIdx}
-                              className="flex justify-between items-start border-b border-[#e8dfd1] pb-3"
+                              className="flex justify-between items-start  pb-3"
                             >
                               <div>
                                 <p className="text-[#524031] text-xl">
@@ -51,7 +85,7 @@ const Categories = () => {
                                   {item.duration}
                                 </p>
                               </div>
-                              <p className="text-[#c9a86b] font-light text-2xl">
+                              <p className="text-[#000] font-light text-2xl">
                                 {item.price}
                               </p>
                             </div>
@@ -81,7 +115,7 @@ const Categories = () => {
         </section>
       </div>
 
-      <div className="space-y-16 text-[#5e4b3b] bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
+      <div id="exam-section" className="space-y-16 text-[#5e4b3b] bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
         {/* Exam Categories */}
         <section>
           <motion.h4
@@ -113,7 +147,7 @@ const Categories = () => {
                     {category.ageGroup}
                   </p>
                 </div>
-                <p className="text-[#c9a86b] font-light text-2xl">
+                <p className="text-[#000] font-light text-2xl">
                   {category.price}
                 </p>
               </motion.div>
@@ -136,7 +170,7 @@ const Categories = () => {
         </section>
       </div>
 
-      <div className="space-y-16 text-[#5e4b3b] bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
+      <div id="age-section" className="space-y-16 text-[#5e4b3b] bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
         {/* Open Categories */}
         <section>
           <motion.h4
@@ -170,7 +204,7 @@ const Categories = () => {
                       {category.duration}
                     </p>
                   </div>
-                  <p className="text-[#c9a86b] font-light text-2xl">
+                  <p className="text-[#000] font-light text-2xl">
                     {category.price}
                   </p>
                 </motion.div>

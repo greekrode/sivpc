@@ -8,7 +8,7 @@ import {
   MapPin,
   VideoIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RegistrationModal from "./RegistrationModal";
 import RulesModal from "./Rules/RulesModal";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
@@ -25,9 +25,29 @@ interface Category {
   subCategories: SubCategory[];
 }
 
-const EventCard = () => {
+interface EventCardProps {
+  shouldOpenRegistration?: boolean;
+  onRegistrationClosed?: () => void;
+}
+
+const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: EventCardProps) => {
   const [showRegistration, setShowRegistration] = useState(false);
   const [showRules, setShowRules] = useState(false);
+
+  // Handle auto-opening registration modal
+  useEffect(() => {
+    if (shouldOpenRegistration) {
+      setShowRegistration(true);
+    }
+  }, [shouldOpenRegistration]);
+
+  const handleRegistrationClose = () => {
+    setShowRegistration(false);
+    if (onRegistrationClosed) {
+      onRegistrationClosed();
+    }
+  };
+
   const categories: Category[] = [
     {
       id: 1,
@@ -103,67 +123,81 @@ const EventCard = () => {
   return (
     <>
       <div className="space-y-8 bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
+        {/* Important Dates Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-start md:items-center flex-col md:flex-row gap-4 pb-8 border-b border-[#e8dfd1]"
+          className="pb-8 border-b border-[#e8dfd1]"
         >
-          <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-4 rounded-full">
-            <Calendar className="w-7 h-7 text-[#a38a5c]" />
+          <div className="mb-6">
+            <h3 className="text-[#857665] text-lg uppercase tracking-wider font-medium">
+              Important Dates
+            </h3>
           </div>
-          <div>
-            <p className="text-[#857665] text-base uppercase tracking-wider font-light">
-              Date
-            </p>
-            <p className="text-[#5e4b3b] text-2xl font-light tracking-wide">
-              13th December 2025
-            </p>
+          
+          {/* Timeline Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Early Bird Deadline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
+            >
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-3 rounded-full mb-4">
+                <BirdIcon className="w-6 h-6 text-[#a38a5c]" />
+              </div>
+              <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
+                Early Bird Deadline
+              </p>
+              <p className="text-[#5e4b3b] text-xl font-light">
+                30th October 2025
+              </p>
+            </motion.div>
+
+            {/* Registration Deadline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
+            >
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-3 rounded-full mb-4">
+                <Clock className="w-6 h-6 text-[#a38a5c]" />
+              </div>
+              <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
+                Registration Deadline
+              </p>
+              <p className="text-[#5e4b3b] text-xl font-light">
+                30th November 2025
+              </p>
+            </motion.div>
+
+            {/* Event Date */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1] ring-2 ring-[#ffb703] ring-opacity-50"
+            >
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#ffb703] to-[#f9a825] p-3 rounded-full mb-4">
+                <Calendar className="w-6 h-6 text-white" />
+              </div>
+              <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
+                Event Date
+              </p>
+              <p className="text-[#5e4b3b] text-xl font-medium">
+                13th December 2025
+              </p>
+            </motion.div>
           </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="flex items-start md:items-center flex-col md:flex-row gap-4 pb-8 border-b border-[#e8dfd1]"
-        >
-          <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-4 rounded-full">
-            <Clock className="w-7 h-7 text-[#a38a5c]" />
-          </div>
-          <div>
-            <p className="text-[#857665] text-base uppercase tracking-wider font-light">
-              Registration Deadline
-            </p>
-            <p className="text-[#5e4b3b] text-2xl font-light">
-              30th November 2025
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex items-start md:items-center flex-col md:flex-row gap-4 pb-8 border-b border-[#e8dfd1]"
-        >
-          <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-4 rounded-full">
-            <BirdIcon className="w-7 h-7 text-[#a38a5c]" />
-          </div>
-          <div>
-            <p className="text-[#857665] text-base uppercase tracking-wider font-light">
-              Early Bird Deadline
-            </p>
-            <p className="text-[#5e4b3b] text-2xl font-light">
-              30th October 2025
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="flex items-start md:items-center flex-col md:flex-row gap-4 pb-8 border-b border-[#e8dfd1]"
         >
           <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-4 rounded-full">
@@ -182,7 +216,7 @@ const EventCard = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="flex items-start md:items-center flex-col md:flex-row gap-4 pb-8"
         >
           <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-4 rounded-full">
@@ -201,7 +235,7 @@ const EventCard = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="pt-4 mt-8"
         >
           <motion.button
@@ -211,7 +245,7 @@ const EventCard = () => {
               boxShadow: "0 0 15px rgba(165, 138, 92, 0.3)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-5 bg-[#ffb703] text-black font-bold tracking-wider uppercase text-base inline-flex items-center gap-3 rounded-md transition-all duration-300"
+            className="px-10 py-5 bg-[#ffb703] text-black font-bold tracking-wider uppercase text-2xl inline-flex items-center gap-3 rounded-xl transition-all duration-300"
           >
             <span>REGISTER NOW</span>
           </motion.button>
@@ -220,7 +254,7 @@ const EventCard = () => {
 
       <RegistrationModal
         isOpen={showRegistration}
-        onClose={() => setShowRegistration(false)}
+        onClose={handleRegistrationClose}
         categories={categories}
         onOpenTerms={() => setShowRules(true)}
       />
