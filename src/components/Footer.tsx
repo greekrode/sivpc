@@ -81,7 +81,7 @@ const Footer = () => {
             </h3>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/sivpc.singapore"
                 className="text-gray-400 hover:text-[#957C3D] transition-colors"
               >
                 <Instagram className="h-6 w-6" />
