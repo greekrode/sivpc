@@ -85,7 +85,7 @@ const Categories = () => {
                                   {item.duration}
                                 </p>
                               </div>
-                              <p className="text-[#000] font-light text-2xl">
+                              <p className="text-[#000] font-light text-xl md:text-2xl">
                                 {item.price}
                               </p>
                             </div>
@@ -147,7 +147,7 @@ const Categories = () => {
                     {category.ageGroup}
                   </p>
                 </div>
-                <p className="text-[#000] font-light text-2xl">
+                <p className="text-[#000] font-light text-xl md:text-2xl">
                   {category.price}
                 </p>
               </motion.div>
@@ -204,7 +204,7 @@ const Categories = () => {
                       {category.duration}
                     </p>
                   </div>
-                  <p className="text-[#000] font-light text-2xl">
+                  <p className="text-[#000] font-light text-xl md:text-2xl">
                     {category.price}
                   </p>
                 </motion.div>
