@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
-import PageTransition from "../components/PageTransition";
+import { Mail, MapPin, Send, Phone } from "lucide-react";
 import Footer from "../components/Footer";
+import PageTransition from "../components/PageTransition";
 
 const ContactInfo = ({
   icon: Icon,
@@ -119,7 +119,7 @@ const Contact = () => {
                   />
                   <ContactInfo
                     icon={Phone}
-                    title="Phone"
+                    title="Whatsapp"
                     content="+65 9774 7304"
                     index={1}
                   />

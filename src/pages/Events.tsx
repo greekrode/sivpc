@@ -58,7 +58,7 @@ const Events = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="mb-16 relative"
+            className="mb-5 relative"
           >
             <motion.div
               initial={{ width: "0%" }}
@@ -79,10 +79,9 @@ const Events = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-[#ffffff] font-light text-xl md:text-2xl max-w-3xl leading-relaxed"
+              className="text-[#ffffff] font-light text-xl md:text-2xl max-w-5xl leading-relaxed"
             >
-              Experience the excellence and artistry of international piano
-              virtuosos competing in our prestigious event.
+              Experience the excellence and artistry of international piano virtuosos competing in our prestigious event.
             </motion.p>
           </motion.div>
 
@@ -96,9 +95,6 @@ const Events = () => {
               className="space-y-10"
             >
               <div className="inline-block">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#c9a86b] mb-2">
-                  Preliminary Round
-                </h2>
                 <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
               </div>
               <EventCard 

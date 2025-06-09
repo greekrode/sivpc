@@ -66,9 +66,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                   parent or guardian.
                 </li>
                 <li>
-                  This competition is open to all Singaporean Citizens and
-                  foreigners not represented by agents or management as
-                  professionals.
+                  Participation in this competition is open to individuals of all nationalities, including Singapore citizens, permanent residents, and international participants residing locally or abroad.
                 </li>
                 <li>
                   Participants are expected to conduct themselves in a
@@ -103,8 +101,15 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                   piece(s) for the selected category.
                 </li>
                 <li>
-                  Participants cannot change their selected piece after
-                  registration closes.
+                  <strong>Repertoire Changes:</strong>
+                  <ul className="list-decimal pl-6 mt-3 space-y-2">
+                    <li>
+                      Participants may change their selected piece(s) before the registration deadline on 30 November 2025. All changes must be sent by email or via WhatsApp.
+                    </li>
+                    <li>
+                      Please include your full name, competition category, the original piece, and the new piece. No changes will be accepted after the deadline.
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   Time limits for performances will be strictly enforced. Judges
@@ -112,7 +117,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                   limit.
                 </li>
                 <li>
-                  The piano model used for the competition is: Yamaha Grand
+                  The piano model used for the competition is: Yamaha Grand C5
                 </li>
               </ul>
             </section>
@@ -142,9 +147,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                   The judges' decisions are final and not subject to appeal.
                 </li>
                 <li>
-                  If a participant studies under a jury member, that jury member
-                  must abstain from scoring or giving comments. The Artistic
-                  Director will replace them for feedback.
+                  If a participant is currently or has recently been a student of a jury member, that jury member must abstain from scoring or commenting on the participant's performance. Feedback will instead be provided by another jury member or the Artistic Director. 
                 </li>
                 <li>
                   Every participant will receive:
@@ -224,6 +227,9 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                 <li>
                   Tripods and professional cameras are not allowed for personal
                   recording.
+                </li>
+                <li>
+                  Participants who purchase the professional video recording and photography service will receive their media files via email in softcopy format within 14 working days after the competition.
                 </li>
               </ul>
             </section>

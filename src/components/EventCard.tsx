@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  Award,
-  BirdIcon,
   Calendar,
   Clock,
   MapPin,
-  VideoIcon,
+  VideoIcon
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import RegistrationModal from "./RegistrationModal";
 import RulesModal from "./Rules/RulesModal";
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 
 interface SubCategory {
   id: number;
@@ -51,7 +47,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
   const categories: Category[] = [
     {
       id: 1,
-      name: "Baroque",
+      name: "Baroque Category",
       subCategories: [
         { id: 1, name: "Petite", ageRequirement: "7 years old and below" },
         { id: 2, name: "Junior", ageRequirement: "8 - 10 years old" },
@@ -61,7 +57,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
     },
     {
       id: 2,
-      name: "Classical",
+      name: "Classical Category",
       subCategories: [
         { id: 5, name: "Petite", ageRequirement: "7 years old and below" },
         { id: 6, name: "Junior", ageRequirement: "8 - 10 years old" },
@@ -71,7 +67,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
     },
     {
       id: 3,
-      name: "Romantic",
+      name: "Romantic Category",
       subCategories: [
         { id: 9, name: "Petite", ageRequirement: "7 years old and below" },
         { id: 10, name: "Junior", ageRequirement: "8 - 10 years old" },
@@ -81,7 +77,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
     },
     {
       id: 4,
-      name: "20th Century",
+      name: "20th Century Category",
       subCategories: [
         { id: 13, name: "Petite", ageRequirement: "7 years old and below" },
         { id: 14, name: "Junior", ageRequirement: "8 - 10 years old" },
@@ -137,25 +133,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
           </div>
           
           {/* Timeline Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Early Bird Deadline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
-            >
-              <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-3 rounded-full mb-4">
-                <BirdIcon className="w-6 h-6 text-[#a38a5c]" />
-              </div>
-              <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
-                Early Bird Registration Deadline
-              </p>
-              <p className="text-[#5e4b3b] text-xl font-light">
-                30th October 2025
-              </p>
-            </motion.div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Registration Deadline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -207,7 +185,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
             <p className="text-[#857665] text-base uppercase tracking-wider font-light">
               Venue
             </p>
-            <p className="text-[#5e4b3b] text-2xl font-light">
+            <p className="text-[#5e4b3b] text-xl font-light">
               Voice of Singapore (VOS)
             </p>
           </div>
@@ -224,9 +202,9 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
           </div>
           <div>
             <p className="text-[#857665] text-base uppercase tracking-wider font-light">
-              Video Recording and 3 Photos Fee
+              Professional Video Recording and 3 Photos Fee
             </p>
-            <p className="text-[#5e4b3b] text-2xl font-light">
+            <p className="text-[#5e4b3b] text-xl font-light">
               S$50 / category
             </p>
           </div>
@@ -236,7 +214,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="pt-4 mt-8"
+          className="pt-4 mt-8 flex justify-center sm:justify-start"
         >
           <motion.button
             onClick={() => setShowRegistration(true)}
@@ -245,7 +223,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
               boxShadow: "0 0 15px rgba(165, 138, 92, 0.3)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-5 bg-[#ffb703] text-black font-bold tracking-wider uppercase text-2xl inline-flex items-center gap-3 rounded-xl transition-all duration-300"
+            className="px-6 py-3 sm:px-10 sm:py-5 bg-[#ffb703] text-black font-bold tracking-wider uppercase text-lg sm:text-xl md:text-2xl inline-flex items-center gap-3 rounded-xl transition-all duration-300"
           >
             <span>REGISTER NOW</span>
           </motion.button>

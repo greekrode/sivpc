@@ -1,11 +1,35 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { examCategories, openCategories, periodCategories } from "./types";
 
 const Categories = () => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navElement = document.getElementById('category-nav');
+      if (navElement) {
+        const rect = navElement.getBoundingClientRect();
+        setIsSticky(rect.top <= 80); // 80px is the top offset (5rem = 80px)
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const navElement = document.getElementById('category-nav');
+      const navHeight = navElement ? navElement.offsetHeight : 0;
+      const elementPosition = element.offsetTop;
+      const offsetPosition = elementPosition - 80 - navHeight - 20; // Navbar (80px) + sticky nav height + 20px buffer
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -13,10 +37,15 @@ const Categories = () => {
     <>
       {/* Navigation Links */}
       <motion.div
+        id="category-nav"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-wrap justify-center gap-4 mb-12"
+        className={`sticky top-20 z-40 flex flex-wrap justify-center gap-4 mb-12 py-4 transition-all duration-300 ${
+          isSticky 
+            ? 'bg-white/95 backdrop-blur-md -mx-8 px-8 border-b border-[#d9cdb8]/30' 
+            : ''
+        }`}
       >
         <button
           onClick={() => scrollToSection('period-section')}

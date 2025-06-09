@@ -69,6 +69,18 @@ const registrationSchema = z.object({
   payment_receipt: z
     .any()
     .refine((file) => file?.length > 0, "Upload payment receipt."),
+  scores_pdf: z
+    .any()
+    .refine((file) => {
+      if (!file || file?.length === 0) return true; // Optional field
+      const selectedFile = file[0];
+      return selectedFile.type === "application/pdf";
+    }, "Only PDF files are allowed.")
+    .refine((file) => {
+      if (!file || file?.length === 0) return true; // Optional field
+      const selectedFile = file[0];
+      return selectedFile.size <= 10 * 1024 * 1024; // 10MB limit
+    }, "File size must be less than 10MB."),
   terms_accepted: z.literal(true, {
     errorMap: () => ({ message: "Please accept the terms and conditions." }),
   }),
@@ -139,7 +151,7 @@ const RegistrationModal = ({
 
       // Add all form fields to FormData
       Object.entries(data).forEach(([key, value]) => {
-        if (key === "payment_receipt") {
+        if (key === "payment_receipt" || key === "scores_pdf") {
           // Get the first file from FileList
           const file = (value as FileList)[0];
           if (file) {
@@ -384,6 +396,25 @@ const RegistrationModal = ({
                   {errors.song_duration.message}
                 </p>
               )}
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Scores PDF (Optional)
+              </label>
+              <input
+                type="file"
+                accept=".pdf"
+                {...register("scores_pdf")}
+                className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
+              />
+              {errors.scores_pdf && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.scores_pdf.message?.toString()}
+                </p>
+              )}
+              <p className="mt-1 text-xs text-gray-500">
+                Upload your musical scores (PDF only, max 10MB)
+              </p>
             </div>
           </div>
 

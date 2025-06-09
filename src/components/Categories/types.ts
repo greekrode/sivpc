@@ -23,7 +23,7 @@ export interface OpenCategory {
 }
 
 export const periodCategories: { [key: string]: Category[] } = {
-  Baroque: [
+  "Baroque Category": [
     {
       title: "Petite",
       items: [
@@ -45,7 +45,7 @@ export const periodCategories: { [key: string]: Category[] } = {
       ],
     },
   ],
-  Classical: [
+  "Classical Category": [
     {
       title: "Petite",
       items: [
@@ -67,7 +67,7 @@ export const periodCategories: { [key: string]: Category[] } = {
       ],
     },
   ],
-  Romantic: [
+  "Romantic Category": [
     {
       title: "Petite",
       items: [
@@ -89,7 +89,7 @@ export const periodCategories: { [key: string]: Category[] } = {
       ],
     },
   ],
-  "20th Century": [
+  "20th Century Category": [
     {
       title: "Petite",
       items: [

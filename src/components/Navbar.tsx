@@ -71,13 +71,6 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link
-                to="/"
-                className="block px-3 py-2 text-white hover:bg-[#957C3D]/10 rounded-md"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
               <button
                 onClick={handleRegisterClick}
                 className="block w-full text-left px-3 py-2 bg-[#ffb703] text-black font-semibold rounded-md hover:bg-[#e6a503] transition-colors duration-200"
