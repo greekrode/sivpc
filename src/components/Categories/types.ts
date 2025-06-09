@@ -32,11 +32,11 @@ export const periodCategories: { [key: string]: Category[] } = {
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "10 years old and below", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "13 years old and below", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
@@ -54,11 +54,11 @@ export const periodCategories: { [key: string]: Category[] } = {
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "10 years old and below", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "13 years old and below", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
@@ -76,11 +76,11 @@ export const periodCategories: { [key: string]: Category[] } = {
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "10 years old and below", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "13 years old and below", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
@@ -98,11 +98,11 @@ export const periodCategories: { [key: string]: Category[] } = {
     },
     {
       title: "Junior",
-      items: [{ name: "8 - 10 years old", duration: "max. 4 mins", price: "S$198" }],
+      items: [{ name: "10 years old and below", duration: "max. 4 mins", price: "S$198" }],
     },
     {
       title: "Senior",
-      items: [{ name: "11 - 13 years old", duration: "max. 5 mins", price: "S$228" }],
+      items: [{ name: "13 years old and below", duration: "max. 5 mins", price: "S$228" }],
     },
     {
       title: "Artist",
