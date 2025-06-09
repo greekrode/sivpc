@@ -71,13 +71,12 @@ const registrationSchema = z.object({
     .refine((file) => file?.length > 0, "Upload payment receipt."),
   scores_pdf: z
     .any()
+    .refine((file) => file?.length > 0, "Upload musical scores PDF.")
     .refine((file) => {
-      if (!file || file?.length === 0) return true; // Optional field
       const selectedFile = file[0];
       return selectedFile.type === "application/pdf";
     }, "Only PDF files are allowed.")
     .refine((file) => {
-      if (!file || file?.length === 0) return true; // Optional field
       const selectedFile = file[0];
       return selectedFile.size <= 10 * 1024 * 1024; // 10MB limit
     }, "File size must be less than 10MB."),
@@ -399,7 +398,7 @@ const RegistrationModal = ({
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Scores PDF (Optional)
+                Scores PDF
               </label>
               <input
                 type="file"

@@ -101,7 +101,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                   piece(s) for the selected category.
                 </li>
                 <li>
-                  <strong>Repertoire Changes:</strong>
+                  Repertoire Changes:
                   <ul className="list-decimal pl-6 mt-3 space-y-2">
                     <li>
                       Participants may change their selected piece(s) before the registration deadline on 30 November 2025. All changes must be sent by email or via WhatsApp.
