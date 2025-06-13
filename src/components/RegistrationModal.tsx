@@ -423,8 +423,23 @@ const RegistrationModal = ({
               Payment Information
             </h3>
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
-              <p className="text-medium text-gray-900">Bank Transfer</p>
-              <p className="text-medium text-gray-900">PayLah!</p>
+              <div>
+                <p className="text-lg font-semibold text-gray-900">
+                  Bank Transfer
+                </p>
+                <p className="text-base text-gray-900">UOB</p>
+                <p className="text-base text-gray-900">7673001541</p>
+                <p className="text-base text-gray-900">
+                  JPIANO GROUP LIMITED LIABILITY PARTNERSHIP
+                </p>
+              </div>
+              <div className="mt-4">
+                <p className="text-lg font-semibold text-gray-900">Paynow</p>
+                <p className="text-base text-gray-900">UEN: T24LL0557G</p>
+              </div>
+              <div className="mt-4">
+                <img src="/qr.jpeg" alt="Paynow QR" />
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
