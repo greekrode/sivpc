@@ -13,10 +13,10 @@ const Events = () => {
 
   useEffect(() => {
     // Check if we should open registration modal from URL parameter
-    if (searchParams.get('openRegistration') === 'true') {
+    if (searchParams.get("openRegistration") === "true") {
       setShouldOpenRegistration(true);
       // Clean up the URL parameter
-      searchParams.delete('openRegistration');
+      searchParams.delete("openRegistration");
       setSearchParams(searchParams, { replace: true });
     }
 
@@ -25,10 +25,13 @@ const Events = () => {
       setShouldOpenRegistration(true);
     };
 
-    window.addEventListener('openRegistrationModal', handleOpenRegistration);
+    window.addEventListener("openRegistrationModal", handleOpenRegistration);
 
     return () => {
-      window.removeEventListener('openRegistrationModal', handleOpenRegistration);
+      window.removeEventListener(
+        "openRegistrationModal",
+        handleOpenRegistration
+      );
     };
   }, [searchParams, setSearchParams]);
 
@@ -72,8 +75,8 @@ const Events = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-5xl md:text-6xl font-light text-[#ffffff] tracking-wide mb-2 py-16"
             >
-              Competition{" "}
-              <span className="text-[#c9a86b] font-semibold">Details</span>
+              SIVPC{" "}
+              <span className="text-[#c9a86b] font-semibold">Festival</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -81,7 +84,8 @@ const Events = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-[#ffffff] font-light text-xl md:text-2xl max-w-5xl leading-relaxed"
             >
-              Experience the excellence and artistry of international piano virtuosos competing in our prestigious event.
+              Experience the excellence and artistry of international piano
+              virtuosos competing in our prestigious event.
             </motion.p>
           </motion.div>
 
@@ -97,7 +101,7 @@ const Events = () => {
               <div className="inline-block">
                 <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
               </div>
-              <EventCard 
+              <EventCard
                 shouldOpenRegistration={shouldOpenRegistration}
                 onRegistrationClosed={handleRegistrationClosed}
               />
@@ -128,7 +132,7 @@ const Events = () => {
             >
               <div className="inline-block">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#c9a86b] mb-2">
-                  Competition Categories
+                  Festival Categories
                 </h2>
                 <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
               </div>

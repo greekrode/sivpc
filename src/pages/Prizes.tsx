@@ -34,7 +34,7 @@ const Prizes = () => {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-6xl font-light text-[#ffffff] tracking-wide mb-2 py-16"
           >
-            Competition{" "}
+            Festival{" "}
             <span className="text-[#c9a86b] font-semibold">Prizes</span>
           </motion.h2>
 
@@ -126,7 +126,7 @@ const Prizes = () => {
               <div className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
                 <div className="relative space-y-6">
                   <p className="text-[#5e4b3b] text-xl font-semibold">
-                    A total cash prize of up to SGD 2,000.00 will be shared
+                    A total cash prize of up to SGD 1,000.00 will be shared
                     among:
                   </p>
                   <ul className="space-y-3 text-[#5e4b3b] text-lg">
@@ -135,7 +135,9 @@ const Prizes = () => {
                     <li>• Best Romantic Award</li>
                     <li>• Best 20th Century Award</li>
                     <li>• Outstanding Performer Award* from Exam Category</li>
-                    <li>• Outstanding Performer Award* from Open Category</li>
+                    <li>
+                      • Outstanding Performer Award* from Free Choice Category
+                    </li>
                   </ul>
                   <p className="text-[#857665] text-sm italic">
                     *Outstanding Performer Award (95 marks and above)
@@ -145,7 +147,7 @@ const Prizes = () => {
             </motion.section>
 
             {/* Masterclass Section */}
-            <motion.section
+            {/* <motion.section
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -167,7 +169,7 @@ const Prizes = () => {
                 </p>
               </div>
             </motion.section>
-
+ */}
 
             {/* Additional Benefits */}
             <motion.section
@@ -189,8 +191,7 @@ const Prizes = () => {
                 <div className="relative space-y-6">
                   <div className="space-y-3">
                     <p className="text-[#5e4b3b] text-xl">
-                      Free Pass to the upcoming Competition without
-                      pre-screening*
+                      Free Pass to the upcoming events without pre-screening*
                     </p>
                     <p className="text-[#857665] text-sm italic">
                       *ONLY eligible for all GOLD winners

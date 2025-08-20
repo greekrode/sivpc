@@ -3,7 +3,11 @@ import {
   Calendar,
   Clock,
   MapPin,
-  VideoIcon
+  Megaphone,
+  PartyPopper,
+  Piano,
+  Speaker,
+  VideoIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import RegistrationModal from "./RegistrationModal";
@@ -26,7 +30,10 @@ interface EventCardProps {
   onRegistrationClosed?: () => void;
 }
 
-const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: EventCardProps) => {
+const EventCard = ({
+  shouldOpenRegistration = false,
+  onRegistrationClosed,
+}: EventCardProps) => {
   const [showRegistration, setShowRegistration] = useState(false);
   const [showRules, setShowRules] = useState(false);
 
@@ -103,15 +110,13 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
     },
     {
       id: 6,
-      name: "Open",
+      name: "Free Choice",
       subCategories: [
         { id: 23, name: "Group A", ageRequirement: "7 years old and below" },
         { id: 24, name: "Group B", ageRequirement: "8 - 10 years old" },
         { id: 25, name: "Group C", ageRequirement: "11 - 13 years old" },
         { id: 26, name: "Group D", ageRequirement: "14 years old and above" },
         { id: 27, name: "Group E", ageRequirement: "14 years old and above" },
-        { id: 28, name: "Group F", ageRequirement: "14 years old and above" },
-        { id: 29, name: "Group G", ageRequirement: "14 years old and above" },
       ],
     },
   ];
@@ -131,21 +136,23 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
               Important Dates
             </h3>
           </div>
-          
+
           {/* Timeline Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Registration Deadline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1] ring-2 ring-[#ffb703] ring-opacity-50"
             >
               <div className="flex items-center justify-center bg-gradient-to-br from-[#e8dfd1] to-[#d9cdb8] p-3 rounded-full mb-4">
                 <Clock className="w-6 h-6 text-[#a38a5c]" />
               </div>
               <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
                 Registration Deadline
+                <br></br>
+                for Virtual and Live Festival
               </p>
               <p className="text-[#5e4b3b] text-xl font-light">
                 30th November 2025
@@ -156,14 +163,50 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1] ring-2 ring-[#ffb703] ring-opacity-50"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
             >
               <div className="flex items-center justify-center bg-gradient-to-br from-[#ffb703] to-[#f9a825] p-3 rounded-full mb-4">
-                <Calendar className="w-6 h-6 text-white" />
+                <Megaphone className="w-6 h-6 text-white" />
               </div>
               <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
-                Event Date
+                Virtual Festival Result Announcement
+              </p>
+              <p className="text-[#5e4b3b] text-xl font-medium">
+                25th November 2025
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
+            >
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#ffb703] to-[#f9a825] p-3 rounded-full mb-4">
+                <PartyPopper className="w-6 h-6 text-white" />
+              </div>
+              <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
+                Live Festival
+              </p>
+              <p className="text-[#5e4b3b] text-xl font-light">
+                30th November 2025
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center text-center bg-gradient-to-br from-[#f7f3eb] to-[#f0e8d5] p-6 rounded-lg border border-[#e8dfd1]"
+            >
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#ffb703] to-[#f9a825] p-3 rounded-full mb-4">
+                <Piano className="w-6 h-6 text-white" />
+              </div>
+              <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
+                Prize Winner Concert
               </p>
               <p className="text-[#5e4b3b] text-xl font-medium">
                 13th December 2025
@@ -183,15 +226,20 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
           </div>
           <div>
             <p className="text-[#857665] text-base uppercase tracking-wider font-light">
-              Venue
+              Live Venue
             </p>
             <p className="text-[#5e4b3b] text-xl font-light">
-              Voice of Singapore (VOS)
+              <a
+                href="https://maps.app.goo.gl/mvy9mYdfmvsWTZpPA"
+                target="_blank"
+              >
+                Voice of Singapore (VOS)
+              </a>
             </p>
           </div>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -208,7 +256,7 @@ const EventCard = ({ shouldOpenRegistration = false, onRegistrationClosed }: Eve
               S$50 / category
             </p>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

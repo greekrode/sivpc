@@ -51,39 +51,63 @@ const Modal = ({
   </>
 );
 
-const registrationSchema = z.object({
-  registrant_status: z.enum(["personal", "parents", "teacher"]),
-  registrant_name: z.string().max(100, "Max 100 chars"),
-  registrant_whatsapp: z.string().regex(/^\+[1-9]\d{1,14}$/, "Invalid phone"),
-  registrant_email: z.string().email("Invalid email"),
-  participant_name: z.string().min(3, "Min 3 chars").max(100, "Max 100 chars"),
-  category_name: z.string().min(1, "Select category"),
-  subcategory_name: z.string().min(1, "Select subcategory"),
-  song_title: z.string().min(1, "Enter song title").max(150, "Max 150 chars"),
-  song_duration: z.string().max(10, "Max 10 chars"),
-  bank_name: z.string().min(1, "Enter bank name").max(100, "Max 100 chars"),
-  account_holder_name: z
-    .string()
-    .min(1, "Enter account name")
-    .max(100, "Max 100 chars"),
-  payment_receipt: z
-    .any()
-    .refine((file) => file?.length > 0, "Upload payment receipt."),
-  scores_pdf: z
-    .any()
-    .refine((file) => file?.length > 0, "Upload musical scores PDF.")
-    .refine((file) => {
-      const selectedFile = file[0];
-      return selectedFile.type === "application/pdf";
-    }, "Only PDF files are allowed.")
-    .refine((file) => {
-      const selectedFile = file[0];
-      return selectedFile.size <= 10 * 1024 * 1024; // 10MB limit
-    }, "File size must be less than 10MB."),
-  terms_accepted: z.literal(true, {
-    errorMap: () => ({ message: "Please accept the terms and conditions." }),
-  }),
-});
+const registrationSchema = z
+  .object({
+    registrant_status: z.enum(["personal", "parents", "teacher"]),
+    registrant_name: z.string().max(100, "Max 100 chars"),
+    registrant_whatsapp: z
+      .string()
+      .regex(/^\+[1-9]\d{1,14}$/, "Invalid phone"),
+    registrant_email: z.string().email("Invalid email"),
+    participant_name: z
+      .string()
+      .min(3, "Min 3 chars")
+      .max(100, "Max 100 chars"),
+    festival_type: z.enum(["live", "virtual"], {
+      required_error: "Select festival type",
+    }),
+    category_name: z.string().min(1, "Select category"),
+    subcategory_name: z.string().min(1, "Select division"),
+    song_title: z
+      .string()
+      .min(1, "Enter song title")
+      .max(150, "Max 150 chars"),
+    song_duration: z.string().max(10, "Max 10 chars"),
+    bank_name: z.string().min(1, "Enter bank name").max(100, "Max 100 chars"),
+    account_holder_name: z
+      .string()
+      .min(1, "Enter account name")
+      .max(100, "Max 100 chars"),
+    payment_receipt: z
+      .any()
+      .refine((file) => file?.length > 0, "Upload payment receipt."),
+    scores_pdf: z
+      .any()
+      .refine((file) => file?.length > 0, "Upload musical scores PDF.")
+      .refine((file) => {
+        const selectedFile = file[0];
+        return selectedFile.type === "application/pdf";
+      }, "Only PDF files are allowed.")
+      .refine((file) => {
+        const selectedFile = file[0];
+        return selectedFile.size <= 10 * 1024 * 1024; // 10MB limit
+      }, "File size must be less than 10MB."),
+    video_url: z.string().url("Enter a valid URL").optional(),
+    terms_accepted: z.literal(true, {
+      errorMap: () => ({ message: "Please accept the terms and conditions." }),
+    }),
+  })
+  .superRefine((data, ctx) => {
+    if (data.festival_type === "virtual") {
+      if (!data.video_url || data.video_url.trim() === "") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["video_url"],
+          message: "Video URL is required for Virtual festival",
+        });
+      }
+    }
+  });
 
 type RegistrationForm = z.infer<typeof registrationSchema>;
 
@@ -129,6 +153,7 @@ const RegistrationModal = ({
       registrant_whatsapp: "",
       song_duration: "",
       registrant_name: "",
+      festival_type: "live",
       category_name: "",
       subcategory_name: "",
     },
@@ -140,6 +165,7 @@ const RegistrationModal = ({
     | "teacher";
   const categoryName = watch("category_name");
   const selectedCategory = categories.find((cat) => cat.name === categoryName);
+  const festivalType = watch("festival_type") as "live" | "virtual";
 
   const onSubmit = async (data: RegistrationForm) => {
     try {
@@ -156,6 +182,11 @@ const RegistrationModal = ({
           if (file) {
             formData.append(key, file);
           }
+        } else if (
+          key === "video_url" && (!value || (value as string).trim() === "")
+        ) {
+          // Skip empty video URL when not provided
+          return;
         } else {
           formData.append(key, value as string);
         }
@@ -213,6 +244,27 @@ const RegistrationModal = ({
     <>
       <Modal isOpen={isOpen} onClose={onClose} title="Event Registration">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Festival Type */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-gray-900">Festival</h3>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Festival Type
+              </label>
+              <select
+                {...register("festival_type")}
+                className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
+              >
+                <option value="live">Live</option>
+                <option value="virtual">Virtual</option>
+              </select>
+              {errors.festival_type && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.festival_type.message}
+                </p>
+              )}
+            </div>
+          </div>
           {/* Registrant's Data */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">
@@ -343,13 +395,13 @@ const RegistrationModal = ({
               {selectedCategory && selectedCategory.subCategories && (
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Subcategory
+                    Division
                   </label>
                   <select
                     {...register("subcategory_name")}
                     className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
                   >
-                    <option value="">Select a subcategory</option>
+                    <option value="">Select a division</option>
                     {selectedCategory.subCategories.map((sub) => (
                       <option
                         key={sub.id}
@@ -415,6 +467,27 @@ const RegistrationModal = ({
                 Upload your musical scores (PDF only, max 10MB)
               </p>
             </div>
+            {festivalType === "virtual" && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Video URL
+                </label>
+                <input
+                  type="url"
+                  placeholder="https://www.youtube.com/..."
+                  {...register("video_url")}
+                  className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
+                />
+                {errors.video_url && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.video_url.message}
+                  </p>
+                )}
+                <p className="mt-1 text-xs text-gray-500">
+                  Paste an accessible YouTube link to your performance.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Payment Information */}

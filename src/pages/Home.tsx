@@ -74,7 +74,7 @@ const Home = () => {
               transition={{ duration: 1, delay: 1.6 }}
             />
             <p className="text-lg sm:text-xl md:text-2xl text-gray-300 tracking-wide font-light italic">
-              Celebrating Excellence in Classical Piano Performance
+              Where Young Virtuosos Take the Stage 2025
             </p>
             <motion.div
               className="h-[1px] w-24 bg-[#ffb703] absolute -bottom-4 left-1/2 transform -translate-x-1/2"
@@ -93,7 +93,7 @@ const Home = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View Competition Details
+            View Event Details
           </motion.button>
         </div>
       </div>

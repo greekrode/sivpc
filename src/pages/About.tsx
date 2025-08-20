@@ -84,8 +84,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-5xl md:text-6xl font-light text-[#ffffff] tracking-wide mb-2 py-16"
             >
-              About{" "}
-              <span className="text-[#c9a86b] font-semibold">SIVPC</span>
+              About <span className="text-[#c9a86b] font-semibold">SIVPC</span>
             </motion.h1>
           </motion.div>
 
@@ -125,9 +124,12 @@ const About = () => {
                   className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md space-y-6"
                 >
                   {[
-                    "The Singapore International Virtuoso Piano Competition (SIVPC) is a prestigious platform celebrating excellence in classical piano performance. Our competition attracts talented pianists from around the world, providing them with an opportunity to showcase their artistry and technical mastery.",
-                    "Founded with the vision of nurturing musical talent and promoting classical piano performance, SIVPC has become a significant event in the international classical music calendar.",
-                    "Our distinguished panel of judges consists of renowned pianists and educators from prestigious music institutions worldwide, ensuring the highest standards of adjudication.",
+                    "Where young virtuosos take the stage — Singapore International Virtuoso Piano Competition (SIVPC) is dedicated to fostering musical excellence at every stage of a pianist’s journey. From budding young talents to aspiring professionals, our festival provides a dynamic and inspiring platform that supports artistic growth, celebrates achievement, and connects musicians through the universal language of music.",
+                    "While originally conceived as an international competition, we are proud to launch our inaugural edition as a festival — a vibrant and inclusive celebration of piano music that honours artistry, growth, and connection.",
+                    "Founded on the belief that performance is an essential part of musical development, we offer a welcoming yet challenging environment where students can build confidence, gain valuable stage experience, and receive constructive feedback from esteemed professionals in the field.",
+                    "Our carefully structured categories are tailored to suit a wide range of ages and proficiency levels — ensuring that every participant, whether a beginner or advanced performer, is encouraged, supported, and recognized for their efforts and progress.",
+                    "With a strong emphasis on both musical integrity and personal growth, SIVPC Festival strives to inspire excellence, ignite passion, and cultivate a lifelong love for music.",
+                    "Step into the spotlight — where young virtuosos take the stage.",
                   ].map((text, index) => (
                     <motion.p
                       key={index}

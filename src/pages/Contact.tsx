@@ -92,7 +92,7 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-[#ffffff] font-light text-xl md:text-2xl max-w-3xl leading-relaxed"
             >
-              Have questions about the competition? We're here to help you.
+              Have questions about the events? We're here to help you.
             </motion.p>
           </motion.div>
 
