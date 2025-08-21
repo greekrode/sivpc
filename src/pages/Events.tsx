@@ -135,6 +135,10 @@ const Events = () => {
                   Festival Categories
                 </h2>
                 <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
+                <p className="text-[#c9a86b] text-lg mt-2">
+                  Participants can participate in more than one category from 3
+                  categories (Period, Exam, Free Choice category) below.
+                </p>
               </div>
               <Categories />
             </motion.section>

@@ -55,23 +55,18 @@ const registrationSchema = z
   .object({
     registrant_status: z.enum(["personal", "parents", "teacher"]),
     registrant_name: z.string().max(100, "Max 100 chars"),
-    registrant_whatsapp: z
-      .string()
-      .regex(/^\+[1-9]\d{1,14}$/, "Invalid phone"),
+    registrant_whatsapp: z.string().regex(/^\+[1-9]\d{1,14}$/, "Invalid phone"),
     registrant_email: z.string().email("Invalid email"),
     participant_name: z
       .string()
       .min(3, "Min 3 chars")
       .max(100, "Max 100 chars"),
-    festival_type: z.enum(["live", "virtual"], {
-      required_error: "Select festival type",
+    festival_type: z.string().refine((value) => value === "live" || value === "virtual", {
+      message: "Please select festival type",
     }),
     category_name: z.string().min(1, "Select category"),
     subcategory_name: z.string().min(1, "Select division"),
-    song_title: z
-      .string()
-      .min(1, "Enter song title")
-      .max(150, "Max 150 chars"),
+    song_title: z.string().min(1, "Enter song title").max(150, "Max 150 chars"),
     song_duration: z.string().max(10, "Max 10 chars"),
     bank_name: z.string().min(1, "Enter bank name").max(100, "Max 100 chars"),
     account_holder_name: z
@@ -85,10 +80,12 @@ const registrationSchema = z
       .any()
       .refine((file) => file?.length > 0, "Upload musical scores PDF.")
       .refine((file) => {
+        if (!file || file.length === 0) return true; // Skip validation if no file
         const selectedFile = file[0];
         return selectedFile.type === "application/pdf";
       }, "Only PDF files are allowed.")
       .refine((file) => {
+        if (!file || file.length === 0) return true; // Skip validation if no file
         const selectedFile = file[0];
         return selectedFile.size <= 10 * 1024 * 1024; // 10MB limit
       }, "File size must be less than 10MB."),
@@ -115,6 +112,8 @@ interface SubCategory {
   id: number;
   name: string;
   ageRequirement: string;
+  livePrice: string;
+  virtualPrice: string;
 }
 
 interface Category {
@@ -153,7 +152,7 @@ const RegistrationModal = ({
       registrant_whatsapp: "",
       song_duration: "",
       registrant_name: "",
-      festival_type: "live",
+      festival_type: "", // No default selection
       category_name: "",
       subcategory_name: "",
     },
@@ -164,8 +163,18 @@ const RegistrationModal = ({
     | "parents"
     | "teacher";
   const categoryName = watch("category_name");
+  const subcategoryName = watch("subcategory_name");
   const selectedCategory = categories.find((cat) => cat.name === categoryName);
-  const festivalType = watch("festival_type") as "live" | "virtual";
+  const selectedSubcategory = selectedCategory?.subCategories.find((sub) => sub.name === subcategoryName);
+  const festivalType = watch("festival_type") as "live" | "virtual" | "";
+
+  // Get the price based on selected category, subcategory, and festival type
+  const getPrice = () => {
+    if (!selectedSubcategory || !festivalType) return null;
+    return festivalType === "live" ? selectedSubcategory.livePrice : selectedSubcategory.virtualPrice;
+  };
+
+  const currentPrice = getPrice();
 
   const onSubmit = async (data: RegistrationForm) => {
     try {
@@ -183,7 +192,8 @@ const RegistrationModal = ({
             formData.append(key, file);
           }
         } else if (
-          key === "video_url" && (!value || (value as string).trim() === "")
+          key === "video_url" &&
+          (!value || (value as string).trim() === "")
         ) {
           // Skip empty video URL when not provided
           return;
@@ -244,9 +254,9 @@ const RegistrationModal = ({
     <>
       <Modal isOpen={isOpen} onClose={onClose} title="Event Registration">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Festival Type */}
+          {/* Festival Type Selection - Always Visible */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Festival</h3>
+            <h3 className="text-lg font-semibold text-gray-900">Choose Festival Type</h3>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Festival Type
@@ -255,8 +265,9 @@ const RegistrationModal = ({
                 {...register("festival_type")}
                 className="block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-marigold focus:ring focus:ring-marigold focus:ring-opacity-50 text-gray-900 text-sm"
               >
-                <option value="live">Live</option>
-                <option value="virtual">Virtual</option>
+                <option value="">Select festival type</option>
+                <option value="live">Live Festival</option>
+                <option value="virtual">Virtual Festival</option>
               </select>
               {errors.festival_type && (
                 <p className="mt-1 text-sm text-red-600">
@@ -264,7 +275,21 @@ const RegistrationModal = ({
                 </p>
               )}
             </div>
+            {festivalType && (
+              <div className="bg-blue-50 p-3 rounded-md border border-blue-200">
+                <p className="text-sm text-blue-800">
+                  {festivalType === "live" 
+                    ? "🎹 You've selected Live Festival - Perform in person at Voice of Singapore (VOS) on December 13th, 2025" 
+                    : "💻 You've selected Virtual Festival - Submit a YouTube video link of your performance"
+                  }
+                </p>
+              </div>
+            )}
           </div>
+
+          {/* Rest of the form - Only show after festival type is selected */}
+          {festivalType && (
+            <>
           {/* Registrant's Data */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">
@@ -417,6 +442,20 @@ const RegistrationModal = ({
                 </div>
               )}
             </div>
+            
+            {/* Price Display */}
+            {currentPrice && (
+              <div className="bg-gradient-to-r from-[#f7f3eb] to-[#f0e8d5] p-4 rounded-lg border border-[#d9cdb8]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#857665] font-medium">Registration Fee:</span>
+                  <span className="text-[#002349] text-xl font-bold">{currentPrice}</span>
+                </div>
+                <p className="text-[#857665] text-sm mt-1">
+                  {festivalType === "live" ? "Live Festival" : "Virtual Festival"}
+                </p>
+              </div>
+            )}
+            
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Song Title
@@ -495,6 +534,10 @@ const RegistrationModal = ({
             <h3 className="text-lg font-semibold text-gray-900">
               Payment Information
             </h3>
+            <p className="text-sm text-gray-500">
+              All payment will be paid in SGD (Singapore Dollar).
+            </p>
+
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
               <div>
                 <p className="text-lg font-semibold text-gray-900">
@@ -590,6 +633,8 @@ const RegistrationModal = ({
               </label>
             </div>
           </div>
+            </>
+          )}
 
           <div className="flex justify-end gap-3 pt-6">
             <button
@@ -601,7 +646,7 @@ const RegistrationModal = ({
             </button>
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !festivalType}
               className="px-6 py-2.5 text-base font-medium text-white bg-[#002349] rounded-lg hover:bg-[#002349]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#002349] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Submitting..." : "Submit"}

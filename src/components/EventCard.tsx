@@ -1,22 +1,16 @@
 import { motion } from "framer-motion";
-import {
-  Calendar,
-  Clock,
-  MapPin,
-  Megaphone,
-  PartyPopper,
-  Piano,
-  Speaker,
-  VideoIcon,
-} from "lucide-react";
+import { Clock, MapPin, Megaphone, PartyPopper, Piano } from "lucide-react";
 import { useEffect, useState } from "react";
 import RegistrationModal from "./RegistrationModal";
 import RulesModal from "./Rules/RulesModal";
+import { periodCategories, examCategories, openCategories } from "./Categories/types";
 
 interface SubCategory {
   id: number;
   name: string;
   ageRequirement: string;
+  livePrice: string;
+  virtualPrice: string;
 }
 
 interface Category {
@@ -51,75 +45,63 @@ const EventCard = ({
     }
   };
 
-  const categories: Category[] = [
-    {
-      id: 1,
-      name: "Baroque Category",
-      subCategories: [
-        { id: 1, name: "Petite", ageRequirement: "7 years old and below" },
-        { id: 2, name: "Junior", ageRequirement: "8 - 10 years old" },
-        { id: 3, name: "Senior", ageRequirement: "11 - 13 years old" },
-        { id: 4, name: "Artist", ageRequirement: "14 years old and above" },
-      ],
-    },
-    {
-      id: 2,
-      name: "Classical Category",
-      subCategories: [
-        { id: 5, name: "Petite", ageRequirement: "7 years old and below" },
-        { id: 6, name: "Junior", ageRequirement: "8 - 10 years old" },
-        { id: 7, name: "Senior", ageRequirement: "11 - 13 years old" },
-        { id: 8, name: "Artist", ageRequirement: "14 years old and above" },
-      ],
-    },
-    {
-      id: 3,
-      name: "Romantic Category",
-      subCategories: [
-        { id: 9, name: "Petite", ageRequirement: "7 years old and below" },
-        { id: 10, name: "Junior", ageRequirement: "8 - 10 years old" },
-        { id: 11, name: "Senior", ageRequirement: "11 - 13 years old" },
-        { id: 12, name: "Artist", ageRequirement: "14 years old and above" },
-      ],
-    },
-    {
-      id: 4,
-      name: "20th Century Category",
-      subCategories: [
-        { id: 13, name: "Petite", ageRequirement: "7 years old and below" },
-        { id: 14, name: "Junior", ageRequirement: "8 - 10 years old" },
-        { id: 15, name: "Senior", ageRequirement: "11 - 13 years old" },
-        { id: 16, name: "Artist", ageRequirement: "14 years old and above" },
-      ],
-    },
-    {
-      id: 5,
+  // Transform categories from types.ts to the format expected by RegistrationModal
+  const transformCategories = (): Category[] => {
+    const categories: Category[] = [];
+    let categoryId = 1;
+    let subCategoryId = 1;
+
+    // Add period categories (Baroque, Classical, Romantic, 20th Century)
+    Object.entries(periodCategories).forEach(([categoryName, categoryData]) => {
+      const subCategories: SubCategory[] = categoryData.categories.map((subCat) => ({
+        id: subCategoryId++,
+        name: subCat.title,
+        ageRequirement: subCat.items[0].name, // Use the first item's name as age requirement
+        livePrice: subCat.items[0].live_price,
+        virtualPrice: subCat.items[0].virtual_price,
+      }));
+
+      categories.push({
+        id: categoryId++,
+        name: categoryName,
+        subCategories,
+      });
+    });
+
+    // Add exam categories
+    const examSubCategories: SubCategory[] = examCategories.map((exam) => ({
+      id: subCategoryId++,
+      name: exam.name,
+      ageRequirement: exam.ageGroup,
+      livePrice: exam.live_price,
+      virtualPrice: exam.virtual_price,
+    }));
+
+    categories.push({
+      id: categoryId++,
       name: "Exam",
-      subCategories: [
-        {
-          id: 17,
-          name: "Initial Grade",
-          ageRequirement: "7 years old and below",
-        },
-        { id: 18, name: "Grade 1-2", ageRequirement: "8 - 10 years old" },
-        { id: 19, name: "Grade 3-4", ageRequirement: "11 - 13 years old" },
-        { id: 20, name: "Grade 5-6", ageRequirement: "14 years old and above" },
-        { id: 21, name: "Grade 7-8", ageRequirement: "14 years old and above" },
-        { id: 22, name: "Diploma", ageRequirement: "14 years old and above" },
-      ],
-    },
-    {
-      id: 6,
+      subCategories: examSubCategories,
+    });
+
+    // Add open categories (Free Choice)
+    const openSubCategories: SubCategory[] = openCategories.map((open) => ({
+      id: subCategoryId++,
+      name: open.group,
+      ageRequirement: open.age,
+      livePrice: open.live_price,
+      virtualPrice: open.virtual_price,
+    }));
+
+    categories.push({
+      id: categoryId++,
       name: "Free Choice",
-      subCategories: [
-        { id: 23, name: "Group A", ageRequirement: "7 years old and below" },
-        { id: 24, name: "Group B", ageRequirement: "8 - 10 years old" },
-        { id: 25, name: "Group C", ageRequirement: "11 - 13 years old" },
-        { id: 26, name: "Group D", ageRequirement: "14 years old and above" },
-        { id: 27, name: "Group E", ageRequirement: "14 years old and above" },
-      ],
-    },
-  ];
+      subCategories: openSubCategories,
+    });
+
+    return categories;
+  };
+
+  const categories = transformCategories();
 
   return (
     <>
@@ -155,7 +137,7 @@ const EventCard = ({
                 for Virtual and Live Festival
               </p>
               <p className="text-[#5e4b3b] text-xl font-light">
-                30th November 2025
+                15th November 2025
               </p>
             </motion.div>
 
@@ -192,7 +174,7 @@ const EventCard = ({
                 Live Festival
               </p>
               <p className="text-[#5e4b3b] text-xl font-light">
-                30th November 2025
+                13th December 2025
               </p>
             </motion.div>
 
