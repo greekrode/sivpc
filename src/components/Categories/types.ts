@@ -22,7 +22,7 @@ export interface ExamCategory {
   virtual_price: string;
 }
 
-export interface OpenCategory {
+export interface FreeChoiceCategory {
   group: string;
   age: string;
   duration: string;
@@ -262,7 +262,7 @@ export const examCategories: ExamCategory[] = [
   },
 ];
 
-export const openCategories: OpenCategory[] = [
+export const freeChoiceCategories: FreeChoiceCategory[] = [
   {
     group: "Group A",
     age: "6 years old and below",

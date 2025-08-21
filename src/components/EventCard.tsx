@@ -3,7 +3,7 @@ import { Clock, MapPin, Megaphone, PartyPopper, Piano } from "lucide-react";
 import { useEffect, useState } from "react";
 import RegistrationModal from "./RegistrationModal";
 import RulesModal from "./Rules/RulesModal";
-import { periodCategories, examCategories, openCategories } from "./Categories/types";
+import { periodCategories, examCategories, freeChoiceCategories } from "./Categories/types";
 
 interface SubCategory {
   id: number;
@@ -84,7 +84,7 @@ const EventCard = ({
     });
 
     // Add open categories (Free Choice)
-    const openSubCategories: SubCategory[] = openCategories.map((open) => ({
+    const openSubCategories: SubCategory[] = freeChoiceCategories.map((open) => ({
       id: subCategoryId++,
       name: open.group,
       ageRequirement: open.age,

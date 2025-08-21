@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { examCategories, openCategories, periodCategories } from "./types";
+import {
+  examCategories,
+  freeChoiceCategories,
+  periodCategories,
+} from "./types";
 
 const Categories = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -286,7 +290,7 @@ const Categories = () => {
             transition={{ duration: 0.5 }}
             className="inline-block text-3xl font-bold text-[#c9a86b] border-b border-[#c9a86b]/30 pb-2 mb-8"
           >
-            Free Choice
+            Free Choice Category
           </motion.h4>
 
           <motion.div
@@ -296,7 +300,7 @@ const Categories = () => {
             className="space-y-6"
           >
             <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-              {openCategories.map((category, index) => (
+              {freeChoiceCategories.map((category, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
