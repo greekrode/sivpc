@@ -345,8 +345,8 @@ const Categories = () => {
             >
               <p className="text-[#6b5a47] text-base leading-relaxed">
                 *Each participant may present{" "}
-                <b>more than one piece or one movement</b> within their selected
-                division.
+                <b>more than one piece or one movement</b> within the duration
+                of their selected division
                 <br />
                 *Age eligibility will be calculated{" "}
                 <b>as of 13 December 2025.</b>
