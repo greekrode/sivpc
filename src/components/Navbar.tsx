@@ -8,12 +8,12 @@ const Navbar = () => {
   const location = useLocation();
 
   const handleRegisterClick = () => {
-    if (location.pathname === '/events') {
+    if (location.pathname === "/events") {
       // If already on events page, dispatch custom event to open modal
-      window.dispatchEvent(new CustomEvent('openRegistrationModal'));
+      window.dispatchEvent(new CustomEvent("openRegistrationModal"));
     } else {
       // Navigate to events page with a flag to open modal
-      navigate('/events?openRegistration=true');
+      navigate("/events?openRegistration=true");
     }
     setIsMobileMenuOpen(false);
   };
@@ -43,8 +43,8 @@ const Navbar = () => {
             <Link to="/events" className="nav-link">
               Events
             </Link>
-            <Link to="/prizes" className="nav-link">
-              Prizes
+            <Link to="/awards" className="nav-link">
+              Awards
             </Link>
             <Link to="/about" className="nav-link">
               About
@@ -85,11 +85,11 @@ const Navbar = () => {
                 Events
               </Link>
               <Link
-                to="/prizes"
+                to="/awards"
                 className="block px-3 py-2 text-white hover:bg-[#957C3D]/10 rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Prizes
+                Awards
               </Link>
               <Link
                 to="/about"

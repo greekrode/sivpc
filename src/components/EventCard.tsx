@@ -3,7 +3,11 @@ import { Clock, MapPin, Megaphone, PartyPopper, Piano } from "lucide-react";
 import { useEffect, useState } from "react";
 import RegistrationModal from "./RegistrationModal";
 import RulesModal from "./Rules/RulesModal";
-import { periodCategories, examCategories, freeChoiceCategories } from "./Categories/types";
+import {
+  periodCategories,
+  examCategories,
+  freeChoiceCategories,
+} from "./Categories/types";
 
 interface SubCategory {
   id: number;
@@ -53,13 +57,15 @@ const EventCard = ({
 
     // Add period categories (Baroque, Classical, Romantic, 20th Century)
     Object.entries(periodCategories).forEach(([categoryName, categoryData]) => {
-      const subCategories: SubCategory[] = categoryData.categories.map((subCat) => ({
-        id: subCategoryId++,
-        name: subCat.title,
-        ageRequirement: subCat.items[0].name, // Use the first item's name as age requirement
-        livePrice: subCat.items[0].live_price,
-        virtualPrice: subCat.items[0].virtual_price,
-      }));
+      const subCategories: SubCategory[] = categoryData.categories.map(
+        (subCat) => ({
+          id: subCategoryId++,
+          name: subCat.title,
+          ageRequirement: subCat.items[0].name, // Use the first item's name as age requirement
+          livePrice: subCat.items[0].live_price,
+          virtualPrice: subCat.items[0].virtual_price,
+        })
+      );
 
       categories.push({
         id: categoryId++,
@@ -84,13 +90,15 @@ const EventCard = ({
     });
 
     // Add open categories (Free Choice)
-    const openSubCategories: SubCategory[] = freeChoiceCategories.map((open) => ({
-      id: subCategoryId++,
-      name: open.group,
-      ageRequirement: open.age,
-      livePrice: open.live_price,
-      virtualPrice: open.virtual_price,
-    }));
+    const openSubCategories: SubCategory[] = freeChoiceCategories.map(
+      (open) => ({
+        id: subCategoryId++,
+        name: open.group,
+        ageRequirement: open.age,
+        livePrice: open.live_price,
+        virtualPrice: open.virtual_price,
+      })
+    );
 
     categories.push({
       id: categoryId++,
@@ -136,7 +144,7 @@ const EventCard = ({
                 <br></br>
                 for Virtual and Live Festival
               </p>
-              <p className="text-[#5e4b3b] text-xl font-light">
+              <p className="text-[#5e4b3b] text-xl font-medium">
                 15th November 2025
               </p>
             </motion.div>
@@ -173,7 +181,7 @@ const EventCard = ({
               <p className="text-[#857665] text-sm uppercase tracking-wider font-light mb-2">
                 Live Festival
               </p>
-              <p className="text-[#5e4b3b] text-xl font-light">
+              <p className="text-[#5e4b3b] text-xl font-medium">
                 13th December 2025
               </p>
             </motion.div>

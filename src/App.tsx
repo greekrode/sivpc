@@ -11,7 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import Home from "./pages/Home";
-import Prizes from "./pages/Prizes";
+import Awards from "./pages/Awards";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -31,11 +31,11 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/prizes"
+          path="/awards"
           element={
             <div className="flex flex-col flex-grow">
               <main className="flex-grow">
-                <Prizes />
+                <Awards />
               </main>
             </div>
           }

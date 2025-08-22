@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 
@@ -7,31 +7,25 @@ const ContactInfo = ({
   icon: Icon,
   title,
   content,
-  index,
 }: {
   icon: typeof Mail;
   title: string;
   content: string;
-  index: number;
 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="flex items-center space-x-4"
-  >
+  <div className="text-center space-y-3">
     <motion.div
       whileHover={{ scale: 1.2, rotate: 360 }}
       transition={{ duration: 0.5 }}
+      className="flex justify-center"
     >
-      <Icon className="text-[#c9a86b] transition-colors duration-300 h-8 w-8" />
+      <Icon className="text-[#c9a86b] transition-colors duration-300 h-10 w-10" />
     </motion.div>
     <div>
       <motion.h4
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-xl font-semibold mb-1 text-[#ffffff]"
+        className="text-xl font-semibold mb-2 text-[#ffffff]"
       >
         {title}
       </motion.h4>
@@ -44,7 +38,7 @@ const ContactInfo = ({
         {content}
       </motion.span>
     </div>
-  </motion.div>
+  </div>
 );
 
 const Contact = () => {
@@ -96,91 +90,105 @@ const Contact = () => {
             </motion.p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <motion.section
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                className="space-y-10"
-              >
-                <div className="inline-block">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#c9a86b] mb-2">
-                    Contact Information
-                  </h2>
-                  <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
-                </div>
-                <div className="space-y-8">
+          <div className="space-y-16">
+            {/* Contact Information Section */}
+            <motion.section
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="space-y-10"
+            >
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#c9a86b] mb-4">
+                  Contact Information
+                </h2>
+                <div className="h-[1px] w-32 bg-gradient-to-r from-transparent via-[#c9a86b] to-transparent mx-auto" />
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-[#c9a86b]/30 text-center hover:bg-white/20 transition-all duration-300"
+                >
                   <ContactInfo
                     icon={Mail}
                     title="Email"
                     content="contact@sivpc.com"
-                    index={0}
                   />
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-[#c9a86b]/30 text-center hover:bg-white/20 transition-all duration-300"
+                >
                   <ContactInfo
                     icon={Phone}
-                    title="Whatsapp"
+                    title="WhatsApp"
                     content="+65 9774 7304"
-                    index={1}
                   />
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-[#c9a86b]/30 text-center hover:bg-white/20 transition-all duration-300"
+                >
                   <ContactInfo
                     icon={MapPin}
                     title="Location"
                     content="Singapore"
-                    index={2}
                   />
-                </div>
-              </motion.section>
-            </div>
+                </motion.div>
+              </div>
+            </motion.section>
 
-            <motion.div
+            {/* Call to Action */}
+            <motion.section
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md"
+              transition={{ duration: 1, delay: 0.4 }}
+              className="text-center space-y-6"
             >
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-lg font-medium mb-2 text-[#4A3B24]">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 bg-white/80 border border-[#d9cdb8] focus:border-[#c9a86b] focus:outline-none text-[#4A3B24] placeholder-[#5e4b3b]/50 rounded-md"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-lg font-medium mb-2 text-[#4A3B24]">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full p-3 bg-white/80 border border-[#d9cdb8] focus:border-[#c9a86b] focus:outline-none text-[#4A3B24] placeholder-[#5e4b3b]/50 rounded-md"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-lg font-medium mb-2 text-[#4A3B24]">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full p-3 bg-white/80 border border-[#d9cdb8] focus:border-[#c9a86b] focus:outline-none text-[#4A3B24] placeholder-[#5e4b3b]/50 rounded-md"
-                    placeholder="Your message"
-                  ></textarea>
-                </div>
-                <motion.button
-                  type="submit"
-                  className="w-full bg-[#c9a86b] hover:bg-[#c9a86b]/90 text-white py-3 px-6 flex items-center justify-center space-x-2 transition-colors duration-300 text-lg font-semibold rounded-md"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              <div className="bg-white/10 backdrop-blur-sm p-12 rounded-lg border border-[#c9a86b]/30 max-w-2xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#c9a86b] mb-4">
+                  Ready to Join Us?
+                </h3>
+                <p className="text-[#ffffff]/90 text-lg mb-6 leading-relaxed">
+                  Whether you're a pianist, teacher, or music enthusiast, we'd love to hear from you. 
+                  Reach out with any questions about our events, competitions, or how to get involved.
+                </p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="flex flex-wrap justify-center gap-4"
                 >
-                  <span>Send Message</span>
-                  <Send className="w-5 h-5" />
-                </motion.button>
-              </form>
-            </motion.div>
+                  <motion.a
+                    href="mailto:contact@sivpc.com"
+                    className="bg-[#c9a86b] hover:bg-[#c9a86b]/90 text-white py-3 px-8 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Mail className="w-5 h-5" />
+                    Email Us
+                  </motion.a>
+                  <motion.a
+                    href="https://wa.me/6597747304"
+                    className="bg-green-600 hover:bg-green-700 text-white py-3 px-8 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Phone className="w-5 h-5" />
+                    WhatsApp
+                  </motion.a>
+                </motion.div>
+              </div>
+            </motion.section>
           </div>
         </div>
         <Footer />
