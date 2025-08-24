@@ -178,7 +178,7 @@ const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
                   <h4 className="text-xl font-bold text-[#c9a86b] mb-3">3. Special Privileges</h4>
                   <ul className="list-disc pl-6 space-y-3">
                     <li>Selected High Scorer Award recipients and participants in the Virtual Festival will be invited to perform at the Prize Winner Concert.</li>
-                    <li>Award recipients will receive a Free Pass to the upcoming competition without the requirement for pre-screening. Further details will be announced via the official website and social media channels.</li>
+                    <li>High scorers and selected gold award recipients will receive a Free Pass to the upcoming competition without the requirement for pre-screening. Further details will be announced via the official website and social media channels.</li>
                   </ul>
                 </div>
               </div>

@@ -58,28 +58,38 @@ const Awards = () => {
                 </div>
                 <div className="h-[1px] w-full bg-gradient-to-r from-[#c9a86b] to-transparent" />
               </div>
-              
+
               {/* Live Participants */}
               <div className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
                 <div className="flex items-center gap-3 mb-6">
                   <Trophy className="w-6 h-6 text-[#c9a86b]" />
-                  <h4 className="text-2xl font-bold text-[#4A3B24]">Live Participants</h4>
+                  <h4 className="text-2xl font-bold text-[#4A3B24]">
+                    Live Participants
+                  </h4>
                 </div>
                 <div className="relative space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Trophy className="w-5 h-5 text-[#c9a86b]" />
-                        <h5 className="text-lg font-semibold text-[#4A3B24]">Trophies</h5>
+                        <h5 className="text-lg font-semibold text-[#4A3B24]">
+                          Trophies
+                        </h5>
                       </div>
-                      <p className="text-[#5e4b3b]">Will receive a trophy based on their score.</p>
+                      <p className="text-[#5e4b3b]">
+                        Will receive a trophy based on their score.
+                      </p>
                     </div>
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <FileText className="w-5 h-5 text-[#c9a86b]" />
-                        <h5 className="text-lg font-semibold text-[#4A3B24]">Certificates</h5>
+                        <h5 className="text-lg font-semibold text-[#4A3B24]">
+                          Certificates
+                        </h5>
                       </div>
-                      <p className="text-[#5e4b3b]">Will receive a printed Certificate.</p>
+                      <p className="text-[#5e4b3b]">
+                        Will receive a printed Certificate.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -89,23 +99,34 @@ const Awards = () => {
               <div className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
                 <div className="flex items-center gap-3 mb-6">
                   <Trophy className="w-6 h-6 text-[#c9a86b]" />
-                  <h4 className="text-2xl font-bold text-[#4A3B24]">Virtual Participants</h4>
+                  <h4 className="text-2xl font-bold text-[#4A3B24]">
+                    Virtual Participants
+                  </h4>
                 </div>
                 <div className="relative space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Trophy className="w-5 h-5 text-[#c9a86b]" />
-                        <h5 className="text-lg font-semibold text-[#4A3B24]">Trophies</h5>
+                        <h5 className="text-lg font-semibold text-[#4A3B24]">
+                          Trophies
+                        </h5>
                       </div>
-                      <p className="text-[#5e4b3b]">Who achieve high scores will also receive a trophy if they are able to attend the prize winner concert.</p>
+                      <p className="text-[#5e4b3b]">
+                        Who achieve high scores will also receive a trophy if
+                        they are able to attend the prize winner concert.
+                      </p>
                     </div>
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <FileText className="w-5 h-5 text-[#c9a86b]" />
-                        <h5 className="text-lg font-semibold text-[#4A3B24]">Certificates</h5>
+                        <h5 className="text-lg font-semibold text-[#4A3B24]">
+                          Certificates
+                        </h5>
                       </div>
-                      <p className="text-[#5e4b3b]">Will receive an E-Certificate.</p>
+                      <p className="text-[#5e4b3b]">
+                        Will receive an E-Certificate.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -113,7 +134,9 @@ const Awards = () => {
 
               {/* Score Ranges */}
               <div className="bg-white backdrop-blur-sm p-8 rounded-md border border-[#d9cdb8] shadow-md">
-                <h4 className="text-2xl font-bold text-[#4A3B24] mb-6">Award Categories</h4>
+                <h4 className="text-2xl font-bold text-[#4A3B24] mb-6">
+                  Award Categories
+                </h4>
                 <div className="relative space-y-6">
                   {[
                     {
@@ -161,10 +184,11 @@ const Awards = () => {
                       </div>
                     </motion.div>
                   ))}
-                  
+
                   <div className="border-t border-[#d9cdb8] pt-6 mt-8">
                     <p className="text-[#5e4b3b] text-lg">
-                      All participants will be provided with a Digital Feedback Form.
+                      All participants will be provided with a Digital Feedback
+                      Form.
                     </p>
                   </div>
                 </div>
@@ -193,50 +217,75 @@ const Awards = () => {
                     <div className="flex items-start gap-3">
                       <GraduationCap className="w-5 h-5 text-[#c9a86b] mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">Free Masterclass Award</h4>
+                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">
+                          Free Masterclass Award
+                        </h4>
                         <p className="text-[#5e4b3b]">
-                          Granted to selected outstanding participants, as determined by the jury, and conducted by distinguished jury members.
+                          Granted to selected outstanding participants, as
+                          determined by the jury, and conducted by distinguished
+                          jury members.
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <Trophy className="w-5 h-5 text-[#c9a86b] mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">High Scorer Award</h4>
+                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">
+                          High Scorer Award
+                        </h4>
                         <p className="text-[#5e4b3b]">
-                          Presented to the top participant in each category with a minimum of 92 marks.
+                          Presented to the top participant in each category with
+                          a minimum of 92 marks.
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <DollarSign className="w-5 h-5 text-[#c9a86b] mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">Prizes</h4>
+                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">
+                          Prizes
+                        </h4>
                         <p className="text-[#5e4b3b]">
-                          A combined total of up to S$1,200 will be distributed, which includes free masterclasses, cash prizes and trophies for both live and virtual high scorers.
+                          A combined total of up to S$1,200 will be distributed,
+                          which includes free masterclasses, cash prizes and
+                          trophies for both live and virtual high scorers.
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <FileText className="w-5 h-5 text-[#c9a86b] mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">Outstanding Teaching Certificate</h4>
+                        <h4 className="text-lg font-bold text-[#4A3B24] mb-2">
+                          Outstanding Teaching Certificate
+                        </h4>
                         <p className="text-[#5e4b3b]">
-                          Awarded to teachers whose students achieve the High Scorer Award in the festival.
+                          Awarded to teachers whose students achieve the High
+                          Scorer Award in the festival.
                         </p>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="border-t border-[#d9cdb8] pt-6">
-                    <h4 className="text-lg font-bold text-[#4A3B24] mb-3">High-Scorer Awards Criteria</h4>
+                    <h4 className="text-lg font-bold text-[#4A3B24] mb-3">
+                      High-Scorer Awards Criteria
+                    </h4>
                     <div className="space-y-2 text-[#5e4b3b]">
-                      <p><strong>Eligible Categories:</strong> Baroque, Classical, Romantic, 20th Century, Exam Category and Free Choice Category</p>
-                      <p><strong>Criteria:</strong> Awarded to the highest-scoring participant in the category</p>
-                      <p><strong>Minimum score:</strong> 92 marks</p>
+                      <p>
+                        <strong>Eligible Categories:</strong> Baroque,
+                        Classical, Romantic, 20th Century, Exam Category and
+                        Free Choice Category
+                      </p>
+                      <p>
+                        <strong>Criteria:</strong> Awarded to the
+                        highest-scoring participant in the category
+                      </p>
+                      <p>
+                        <strong>Minimum score:</strong> 92 marks
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -288,10 +337,16 @@ const Awards = () => {
                 <div className="relative space-y-6">
                   <div className="space-y-4">
                     <p className="text-[#5e4b3b] text-lg">
-                      • Selected High Scorer Award recipients and participants in the Virtual Festival will be invited to perform at the Prize Winner Concert.
+                      • Selected High Scorer Award recipients and participants
+                      in the Virtual Festival will be invited to perform at the
+                      Prize Winner Concert.
                     </p>
                     <p className="text-[#5e4b3b] text-lg">
-                      • Award recipients will receive a Free Pass to the upcoming competition without the requirement for pre-screening.
+                      • High scorers and selected gold award recipients will
+                      receive a Free Pass to the upcoming competition without
+                      the requirement for pre-screening. Further details will be
+                      announced via the official website and social media
+                      channels.
                     </p>
                   </div>
                 </div>
