@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, SubmitHandler, Resolver } from "react-hook-form";
 
 import { useState } from "react";
 import { z } from "zod";
@@ -146,13 +146,13 @@ const RegistrationModal = ({
     control,
     formState: { errors },
   } = useForm<RegistrationForm>({
-    resolver: zodResolver(registrationSchema),
+    resolver: zodResolver(registrationSchema) as Resolver<RegistrationForm>,
     defaultValues: {
       registrant_status: "personal",
       registrant_whatsapp: "",
       song_duration: "",
       registrant_name: "",
-      festival_type: "", // No default selection
+      festival_type: "live",
       category_name: "",
       subcategory_name: "",
     },
@@ -166,7 +166,7 @@ const RegistrationModal = ({
   const subcategoryName = watch("subcategory_name");
   const selectedCategory = categories.find((cat) => cat.name === categoryName);
   const selectedSubcategory = selectedCategory?.subCategories.find((sub) => sub.name === subcategoryName);
-  const festivalType = watch("festival_type") as "live" | "virtual" | "";
+  const festivalType = watch("festival_type") as "live" | "virtual";
 
   // Get the price based on selected category, subcategory, and festival type
   const getPrice = () => {
@@ -176,7 +176,7 @@ const RegistrationModal = ({
 
   const currentPrice = getPrice();
 
-  const onSubmit = async (data: RegistrationForm) => {
+  const onSubmit: SubmitHandler<RegistrationForm> = async (data) => {
     try {
       setIsSubmitting(true);
       setShowLoadingModal(true);
@@ -234,6 +234,22 @@ const RegistrationModal = ({
         throw new Error("Registration failed");
       }
 
+      // Fire-and-forget webhook to trigger email based on submission
+      try {
+        await fetch("https://n8n.kangritel.com/webhook/sivpc-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            type: data.festival_type,
+            email: data.registrant_email,
+          }),
+        });
+      } catch (emailWebhookError) {
+        console.error("Email webhook error:", emailWebhookError);
+      }
+
       setReferenceNumber(refNumber);
       setShowLoadingModal(false);
       setShowThankYouModal(true);
@@ -245,6 +261,8 @@ const RegistrationModal = ({
     }
   };
 
+  const submitHandler = handleSubmit(onSubmit as SubmitHandler<RegistrationForm>);
+
   const handleThankYouClose = () => {
     setShowThankYouModal(false);
     onClose();
@@ -253,7 +271,7 @@ const RegistrationModal = ({
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} title="Event Registration">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={submitHandler} className="space-y-6">
           {/* Festival Type Selection - Always Visible */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">Choose Festival Type</h3>
