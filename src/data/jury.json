@@ -1,0 +1,36 @@
+{
+  "virtual": [
+    {
+      "id": "evelyn-handrisanto",
+      "name": "Evelyn Handrisanto",
+      "image": "/jury/evelyn.jpeg",
+      "bio": "<p><b>Evelyn Handrisanto</b> began her musical journey in Medan, Indonesia, and graduated with Distinction from the Nanyang Academy of Fine Arts on a full scholarship in 2015. She went on to complete the NAFA-Royal College of Music programme with First Class Honours in 2017, supported by the Leong Yoon Pin Scholarship, and trained under esteemed mentors including Mrs. Rena Phua, Mr. Boris Kraljevic, and Prof. Gordon Fergus-Thompson. During her studies she performed as concerto soloist with the NAFA Orchestra and collaborated with leading artists such as Foo Say Ming and Joost Flach. Her achievements include First Prize and the Best Sonata Prize at the Nanyang International Music Competition, as well as her solo-recital debut at Singapore's Esplanade, sponsored by the Kris Foundation.</p><br/><p>Beyond her performance career, Evelyn is the co-founder of Quatre Music Organization, dedicated to promoting classical music through concerts and festivals in Singapore and abroad. She currently serves as resident accompanist for the Singapore Symphony Youth Choir and is an active piano educator, with students who have won awards and continued their music studies internationally.</p>"
+    },
+    {
+      "id": "nguyen-nhat-quy",
+      "name": "Nguyen Nhat Quy",
+      "image": "/jury/quy.jpeg",
+      "bio": "<p><b>Nguyen Nhat Quy</b> received her early training at the Ho Chi Minh City Conservatory of Music with pianist Le Ho Hai before earning a First Class Honours Bachelor of Music from the Nanyang Academy of Fine Arts (Singapore) under Professor Boris Kraljevic. She later completed her Master of Music in Piano Performance with distinction at the Moores School of Music, University of Houston, studying with Professor Nancy Weems. During her studies, she performed at international festivals and was selected for a master class with legendary pianist Abbey Simon. Recognized for her academic excellence, she was inducted into the Golden Key International Honor Society.</p><br/><p>Alongside her performance career, Nhat Quy is a passionate educator and pedagogue, having studied piano pedagogy with Professor John Weems. She has taught at Music Fest Perugia in Italy, served as jury member for the Singapore International Youth Piano Competition and WPTA Singapore Piano Competition, and performed at festivals across Europe and Asia. Currently, she is Director of Saigon Piano School in Ho Chi Minh City, where her students have consistently earned top prizes at national and international competitions and gained admission to leading music programs worldwide.</p>"
+    }
+  ],
+  "live": [
+    {
+      "id": "korak-lertpibulchai",
+      "name": "Korak Lertpibulchai",
+      "image": "/jury/korak.jpg",
+      "bio": "<p><b>Korak Lertpibulchai</b> is Chair of the Piano Department at the College of Music, Mahidol University, where she has served on the faculty since 2017. She has performed extensively as a soloist and chamber musician across the United States, Spain, Italy, Singapore, and at leading conservatories throughout China. In 2024, her engagements included a solo recital and masterclasses at the Conservatorio di Musica Giuseppe Tartini (Italy), adjudicating and performing at the 5th Omartis International Music Competition (Singapore), and performing both as part of the Salaya Duo and as soloist with the Mahidol Symphony Orchestra in Tchaikovsky’s Piano Concerto No. 1. She looks forward to presenting new solo and chamber programs in 2025.</p><br/><p>A passionate advocate for contemporary music, Korak was pianist for the University of Iowa Center for New Music from 2014 to 2017, premiering works by renowned composers such as David Lang, Kaija Saariaho, and Augusta Read Thomas. Her discography includes recordings of works by David Gompper, Alan Schnitz, and a project featuring contemporary Thai piano music. She has served as juror for international competitions including the Osaka International Music Competition, Thailand International Piano Competition, and Omartis International Music Competition. Korak holds a Bachelor of Music with First-Class Honors from Mahidol University, a Master of Music from Illinois State University, and a Doctor of Musical Arts from the University of Iowa.</p>"
+    },
+    {
+      "id": "wilson",
+      "name": "Wilson",
+      "image": "/jury/wilson.jpeg",
+      "bio": "<p><b>Wilson Chu</b> is a distinguished concert pianist, composer, improviser, and educator, currently serving as the youngest Associate Professor of Piano at the College of Chinese & ASEAN Arts, Chengdu University. A recipient of full scholarships, he earned his Diploma, Bachelor's, and Master's degrees at the Nanyang Academy of Fine Arts (Singapore) and the Royal Conservatoire of Scotland, graduating with First-Class Honours and High Distinction. His groundbreaking dissertation in 2018 introduced the integration of Gamelan and piano in Scotland. Wilson's artistry has been recognized with numerous international awards, including the Lamond Prize and the Yamaha International Piano Competition, and he has performed at prestigious venues such as Wigmore Hall, Esplanade Singapore, and Aula Simfonia Jakarta.</p><br/><p>Alongside his performance career, Wilson is a dedicated educator and juror, frequently giving masterclasses and serving on panels for major international competitions across Asia, Europe, and Australia. He is the first Steinway Teacher & Educational Partner (STEP) in Indonesia, an Ambassador of the Royal Conservatoire of Scotland to Asia, and since 2024, Artistic Director of the Musica Lumina International Piano Competition. In 2025, he launched his piano studio in Jakarta in partnership with Steinway Indonesia and Kakano Music Centre, inspired by his students' remarkable successes at international competitions worldwide.</p>"
+    },
+    {
+      "id": "stefan-popov",
+      "name": "Stefan Popov",
+      "image": "/jury/stefan.jpeg",
+      "bio": "<p><b>Mr. Stefan Popov</b> holds a Master's degree in Piano Performance from the Pancho Vladigerov Academy of Music in Sofia, Bulgaria, along with a Bachelor's degree in Sound Engineering. Trained also in flute and digital piano, he has performed as both soloist and accompanist in Bulgaria, Germany, and Norway, and has recorded for Bulgarian national radio and television. His career spans performances at recitals, competitions, and chamber concerts, including appearances on Singapore stages.</p><br/><p>With over 20 years of teaching experience, Mr. Stefan is dedicated to piano, aural, and theory instruction. Many of his students have excelled in graded and diploma examinations, while also actively performing in school concerts as soloists and accompanists. In addition to his professional pursuits, he enjoys swimming, cycling, and trekking.</p>"
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import Home from "./pages/Home";
 import Awards from "./pages/Awards";
+import Jury from "./pages/Jury";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -46,6 +47,16 @@ function AnimatedRoutes() {
             <div className="flex flex-col flex-grow">
               <main className="flex-grow">
                 <About />
+              </main>
+            </div>
+          }
+        />
+        <Route
+          path="/jury"
+          element={
+            <div className="flex flex-col flex-grow">
+              <main className="flex-grow">
+                <Jury />
               </main>
             </div>
           }

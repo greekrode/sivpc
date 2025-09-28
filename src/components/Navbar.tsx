@@ -46,6 +46,9 @@ const Navbar = () => {
             <Link to="/awards" className="nav-link">
               Awards
             </Link>
+            <Link to="/jury" className="nav-link">
+              Jury
+            </Link>
             <Link to="/about" className="nav-link">
               About
             </Link>
@@ -90,6 +93,13 @@ const Navbar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Awards
+              </Link>
+              <Link
+                to="/jury"
+                className="block px-3 py-2 text-white hover:bg-[#957C3D]/10 rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Jury
               </Link>
               <Link
                 to="/about"
