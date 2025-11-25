@@ -163,7 +163,7 @@ const EventCard = ({
                 Virtual Festival Result Announcement
               </p>
               <p className="text-[#5e4b3b] text-xl font-medium">
-                25th November 2025
+                3rd December 2025
               </p>
             </motion.div>
           </div>
